@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Title>Quamotion iOS WebDriverAgent</Title>
+    <Description>A WebDriver server for iOS that runs inside the Simulator.</Description>
+    <Product>Quamotion iOS WebDriverAgent</Product>
+    <Company>Quamotion</Company>
+    <Authors>Facebook, Quamotion</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(ProjectDir)\WebDriverAgent.zip" />
+  </ItemGroup>
+</Project>
