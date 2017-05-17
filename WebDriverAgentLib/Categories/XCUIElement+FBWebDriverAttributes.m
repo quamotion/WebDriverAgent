@@ -16,6 +16,7 @@
 #import "XCUIElement+FBAccessibility.h"
 #import "XCUIElement+FBIsVisible.h"
 #import "XCUIElement+FBUID.h"
+#import "XCUIElement+FBClass.h"
 #import "XCUIElement.h"
 #import "XCUIElement+FBUtilities.h"
 #import "FBElementUtils.h"
@@ -171,6 +172,11 @@ static NSMutableDictionary<NSNumber *, NSMutableDictionary<NSString *, NSMutable
   };
   
   return [self fb_cachedValueWithAttributeName:@"wdUID" valueGetter:getter];
+}
+
+- (NSString *)wdClass
+{
+  return FBTransferEmptyStringToNil(self.fb_class);
 }
 
 - (CGRect)wdFrame
