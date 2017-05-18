@@ -29,13 +29,22 @@
 @end
 
 @implementation XCElementSnapshot (FBIsVisible)
-
 - (BOOL)fb_isVisible
 {
-  if (CGRectIsEmpty(self.frame)) {
+  CGRect frame = self.frame;
+  if (CGRectIsEmpty(frame)) {
     return NO;
   }
-  CGRect visibleFrame = self.visibleFrame;
+  return [self fb_isVisible:NO];
+}
+
+- (BOOL)fb_isVisible: (BOOL)useHeuristic
+{
+  CGRect frame = self.frame;
+  if (CGRectIsEmpty(frame)) {
+    return NO;
+  }
+  CGRect visibleFrame = useHeuristic ? frame : self.visibleFrame;
   if (CGRectIsEmpty(visibleFrame)) {
     return NO;
   }
@@ -43,20 +52,11 @@
     return [(NSNumber *)[self fb_attributeValue:FB_XCAXAIsVisibleAttribute] boolValue];
   }
   CGRect appFrame = [self fb_rootElement].frame;
+  XCElementSnapshot *app = [self _rootElement];
   CGSize screenSize = FBAdjustDimensionsForApplication(appFrame.size, (UIInterfaceOrientation)[XCUIDevice sharedDevice].orientation);
-  CGRect screenFrame = CGRectMake(0, 0, screenSize.width, screenSize.height);
-  if (!CGRectIntersectsRect(visibleFrame, screenFrame)) {
-    return NO;
-  }
-  if (CGRectContainsPoint(appFrame, self.fb_hitPoint)) {
-    return YES;
-  }
-  for (XCElementSnapshot *elementSnapshot in self._allDescendants.copy) {
-    if (CGRectContainsPoint(appFrame, elementSnapshot.fb_hitPoint)) {
-      return YES;
-    }
-  }
-  return NO;
+  CGRect screenFrame = CGRectMake(0, 0, screenSize.width, screenSize.height);  BOOL rectIntersects = CGRectIntersectsRect(visibleFrame, screenFrame);
+  BOOL isActionable = useHeuristic ? YES : CGRectContainsPoint(app.frame, self.fb_hitPoint);
+  return rectIntersects && isActionable;
 }
 
 @end

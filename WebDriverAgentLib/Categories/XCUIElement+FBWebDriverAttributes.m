@@ -105,6 +105,11 @@
   return self.fb_isVisible;
 }
 
+- (BOOL)isWDVisible:(BOOL)useHeuristic
+{
+  return [self fb_isVisible:useHeuristic];
+}
+
 - (BOOL)isWDAccessible
 {
   // Special cases:
