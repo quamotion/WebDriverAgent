@@ -287,6 +287,7 @@ NSString *const XCElementSnapshotXPathQueryEvaluationException = @"XCElementSnap
     }
     int rc = [attributeCls recordWithWriter:writer forElement:element];
     if (rc < 0) {
+      [FBLogger logFmt:@"Failed to invoke libxml2>xmlTextWriterWriteAttribute(label='%@'). Error code: %d", element.wdLabel, rc];
       return rc;
     }
   }

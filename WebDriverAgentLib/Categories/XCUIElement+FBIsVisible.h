@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*! Whether or not the element is visible */
 @property (atomic, readonly) BOOL fb_isVisible;
-
 @end
 
 NS_ASSUME_NONNULL_END
