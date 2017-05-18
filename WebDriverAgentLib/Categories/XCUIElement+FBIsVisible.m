@@ -29,7 +29,6 @@
 @end
 
 @implementation XCElementSnapshot (FBIsVisible)
-
 - (BOOL)fb_isVisible
 {
   CGRect frame = self.frame;
