@@ -11,4 +11,4 @@ script:
   - ./Scripts/bootstrap.sh
   - ./signing/add-key.sh
   - mkdir ./out
-  - codebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -sdk iphoneos -configuration Release -derivedDataPath ./out
+  - xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -sdk iphoneos -configuration Release -derivedDataPath ./out
