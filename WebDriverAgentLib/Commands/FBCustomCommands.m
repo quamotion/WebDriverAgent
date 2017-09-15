@@ -41,6 +41,7 @@
     [[FBRoute GET:@"/wda/elementCache/size"] respondWithTarget:self action:@selector(handleGetElementCacheSizeCommand:)],
     [[FBRoute POST:@"/wda/elementCache/clear"] respondWithTarget:self action:@selector(handleClearElementCacheCommand:)],
     [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
+    [[FBRoute POST:@"/wda/pressDeviceButton"] respondWithTarget:self action:@selector(handlePressDeviceButtonCommand:)],
   ];
 }
 
@@ -117,6 +118,16 @@
   if (![FBKeyboard typeText:text waitForKeyboard:waitForKeyboard frequency:[FBConfiguration maxTypingFrequency] error:&error]) {
     return FBResponseWithError(error);
   }
+  return FBResponseWithOK();
+}
+
++ (id<FBResponsePayload>)handlePressDeviceButtonCommand:(FBRouteRequest *)request
+{
+  XCUIDeviceButton button = (XCUIDeviceButton)[request.arguments[@"button"] integerValue];
+ 
+  XCUIDevice *device = [XCUIDevice sharedDevice];
+  [device pressButton:button];
+  
   return FBResponseWithOK();
 }
 @end
