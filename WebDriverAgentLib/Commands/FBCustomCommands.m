@@ -40,9 +40,9 @@
     [[FBRoute POST:@"/wda/keyboard/dismiss"] respondWithTarget:self action:@selector(handleDismissKeyboardCommand:)],
     [[FBRoute GET:@"/wda/elementCache/size"] respondWithTarget:self action:@selector(handleGetElementCacheSizeCommand:)],
     [[FBRoute POST:@"/wda/elementCache/clear"] respondWithTarget:self action:@selector(handleClearElementCacheCommand:)],
+    [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
   ];
 }
-
 
 #pragma mark - Commands
 
@@ -105,6 +105,18 @@
 {
   FBElementCache *elementCache = request.session.elementCache;
   [elementCache clear];
+  return FBResponseWithOK();
+}
+
++ (id<FBResponsePayload>)handleTypeCommand:(FBRouteRequest *)request
+{
+  NSError *error;
+  NSString *text = request.arguments[@"text"];
+  BOOL waitForKeyboard = [request.arguments[@"waitForKeyboard"] boolValue];
+
+  if (![FBKeyboard typeText:text waitForKeyboard:waitForKeyboard frequency:[FBConfiguration maxTypingFrequency] error:&error]) {
+    return FBResponseWithError(error);
+  }
   return FBResponseWithOK();
 }
 @end

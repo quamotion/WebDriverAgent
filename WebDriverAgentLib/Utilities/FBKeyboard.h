@@ -38,7 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error If there is an error, upon return contains an NSError object that describes the problem.
  @return YES if the operation succeeds, otherwise NO.
 */
+
 + (BOOL)typeText:(NSString *)text frequency:(NSUInteger)frequency error:(NSError **)error;
+
++ (BOOL)typeText:(NSString *)text waitForKeyboard:(BOOL)waitUntilVisible frequency:(NSUInteger)frequency error:(NSError **)error;
 
 @end
 

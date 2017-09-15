@@ -25,15 +25,19 @@
 
 
 @implementation FBKeyboard
-
 + (BOOL)typeText:(NSString *)text error:(NSError **)error
 {
-  return [self typeText:text frequency:[FBConfiguration maxTypingFrequency] error:error];
+  return [self typeText:text waitForKeyboard:NO frequency:[FBConfiguration maxTypingFrequency] error:error];
 }
 
 + (BOOL)typeText:(NSString *)text frequency:(NSUInteger)frequency error:(NSError **)error
 {
-  if (![FBKeyboard waitUntilVisibleWithError:error]) {
+  return [self typeText:text waitForKeyboard:NO frequency:frequency error:error];
+}
+
++ (BOOL)typeText:(NSString *)text waitForKeyboard:(BOOL)waitUntilVisible frequency:(NSUInteger)frequency error:(NSError **)error
+{
+  if (waitUntilVisible && ![FBKeyboard waitUntilVisibleWithError:error]) {
     return NO;
   }
   __block BOOL didSucceed = NO;
