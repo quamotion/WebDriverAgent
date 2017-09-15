@@ -62,6 +62,7 @@
     [[FBRoute GET:@"/wda/device/info"].withoutSession respondWithTarget:self action:@selector(handleGetDeviceInfo:)],
     [[FBRoute OPTIONS:@"/*"].withoutSession respondWithTarget:self action:@selector(handlePingCommand:)],
     [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
+    [[FBRoute POST:@"/wda/pressDeviceButton"] respondWithTarget:self action:@selector(handlePressDeviceButtonCommand:)],
   ];
 }
 
@@ -385,4 +386,13 @@
   return FBResponseWithOK();
 }
 
++ (id<FBResponsePayload>)handlePressDeviceButtonCommand:(FBRouteRequest *)request
+{
+  XCUIDeviceButton button = (XCUIDeviceButton)[request.arguments[@"button"] integerValue];
+ 
+  XCUIDevice *device = [XCUIDevice sharedDevice];
+  [device pressButton:button];
+  
+  return FBResponseWithOK();
+}
 @end
