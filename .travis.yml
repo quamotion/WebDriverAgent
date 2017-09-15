@@ -13,13 +13,7 @@ install:
 script:
   - ./Scripts/bootstrap.sh
   - ./signing/add-key.sh
-  - mkdir ./out
-  - xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -sdk iphoneos -configuration Release -derivedDataPath ./out
-  - mkdir -p ./out/ipa/Payload
-  - cp -r ./out/Build/Products/Release-iphoneos/WebDriverAgentRunner-Runner.app ./out/ipa/Payload/
-  - cd ./out/ipa
-  - zip -r ../WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip .
-  - cd ../../
+  - ./build-ipa.sh
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then az=$HOME/Library/Python/2.7/bin/az; fi
