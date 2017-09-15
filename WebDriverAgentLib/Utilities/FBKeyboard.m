@@ -25,7 +25,6 @@
 #import "FBConfiguration.h"
 
 @implementation FBKeyboard
-
 + (BOOL)typeText:(NSString *)text error:(NSError **)error
 {
   return [self typeText:text frequency:[FBConfiguration maxTypingFrequency] error:error];
