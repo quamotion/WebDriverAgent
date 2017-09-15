@@ -52,6 +52,7 @@
     [[FBRoute POST:@"/wda/getPasteboard"] respondWithTarget:self action:@selector(handleGetPasteboard:)],
     [[FBRoute GET:@"/wda/batteryInfo"] respondWithTarget:self action:@selector(handleGetBatteryInfo:)],
     [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
+    [[FBRoute POST:@"/wda/pressDeviceButton"] respondWithTarget:self action:@selector(handlePressDeviceButtonCommand:)],
   ];
 }
 
@@ -202,4 +203,13 @@
   return FBResponseWithOK();
 }
 
++ (id<FBResponsePayload>)handlePressDeviceButtonCommand:(FBRouteRequest *)request
+{
+  XCUIDeviceButton button = (XCUIDeviceButton)[request.arguments[@"button"] integerValue];
+ 
+  XCUIDevice *device = [XCUIDevice sharedDevice];
+  [device pressButton:button];
+  
+  return FBResponseWithOK();
+}
 @end
