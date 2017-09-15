@@ -38,9 +38,9 @@
     [[FBRoute POST:@"/wda/homescreen"].withoutSession respondWithTarget:self action:@selector(handleHomescreenCommand:)],
     [[FBRoute POST:@"/wda/deactivateApp"] respondWithTarget:self action:@selector(handleDeactivateAppCommand:)],
     [[FBRoute POST:@"/wda/keyboard/dismiss"] respondWithTarget:self action:@selector(handleDismissKeyboardCommand:)],
+    [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
   ];
 }
-
 
 #pragma mark - Commands
 
@@ -93,4 +93,15 @@
   return FBResponseWithOK();
 }
 
++ (id<FBResponsePayload>)handleTypeCommand:(FBRouteRequest *)request
+{
+  NSError *error;
+  NSString *text = request.arguments[@"text"];
+  BOOL waitForKeyboard = [request.arguments[@"waitForKeyboard"] boolValue];
+
+  if (![FBKeyboard typeText:text waitForKeyboard:waitForKeyboard error:&error]) {
+    return FBResponseWithError(error);
+  }
+  return FBResponseWithOK();
+}
 @end

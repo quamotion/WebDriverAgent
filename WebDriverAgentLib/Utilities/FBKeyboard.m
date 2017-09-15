@@ -24,10 +24,14 @@
 
 
 @implementation FBKeyboard
-
 + (BOOL)typeText:(NSString *)text error:(NSError **)error
 {
-  if (![FBKeyboard waitUntilVisibleWithError:error]) {
+  return [self typeText:text waitForKeyboard:NO error:error];
+}
+
++ (BOOL)typeText:(NSString *)text waitForKeyboard:(BOOL)waitUntilVisible error:(NSError **)error
+{
+  if (waitUntilVisible && ![FBKeyboard waitUntilVisibleWithError:error]) {
     return NO;
   }
   __block BOOL didSucceed = NO;
