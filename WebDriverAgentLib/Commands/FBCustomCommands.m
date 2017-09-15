@@ -53,9 +53,9 @@
     [[FBRoute GET:@"/wda/batteryInfo"] respondWithTarget:self action:@selector(handleGetBatteryInfo:)],
     [[FBRoute POST:@"/wda/pressButton"] respondWithTarget:self action:@selector(handlePressButtonCommand:)],
     [[FBRoute POST:@"/wda/siri/activate"] respondWithTarget:self action:@selector(handleActivateSiri:)],
+    [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
   ];
 }
-
 
 #pragma mark - Commands
 
@@ -206,6 +206,17 @@
 {
   NSError *error;
   if (![XCUIDevice.sharedDevice fb_activateSiriVoiceRecognitionWithText:(id)request.arguments[@"text"] error:&error]) {
+    return FBResponseWithError(error);
+  }
+  return FBResponseWithOK();
+}
+
++ (id<FBResponsePayload>)handleTypeCommand:(FBRouteRequest *)request
+{
+  NSError *error;
+  NSString *text = request.arguments[@"text"];
+
+  if (![FBKeyboard typeText:text frequency:[FBConfiguration maxTypingFrequency] error:&error]) {
     return FBResponseWithError(error);
   }
   return FBResponseWithOK();
