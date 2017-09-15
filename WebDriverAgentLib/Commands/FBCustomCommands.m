@@ -39,6 +39,7 @@
     [[FBRoute POST:@"/wda/deactivateApp"] respondWithTarget:self action:@selector(handleDeactivateAppCommand:)],
     [[FBRoute POST:@"/wda/keyboard/dismiss"] respondWithTarget:self action:@selector(handleDismissKeyboardCommand:)],
     [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
+    [[FBRoute POST:@"/wda/pressDeviceButton"] respondWithTarget:self action:@selector(handlePressDeviceButtonCommand:)],
   ];
 }
 
@@ -102,6 +103,16 @@
   if (![FBKeyboard typeText:text waitForKeyboard:waitForKeyboard error:&error]) {
     return FBResponseWithError(error);
   }
+  return FBResponseWithOK();
+}
+
++ (id<FBResponsePayload>)handlePressDeviceButtonCommand:(FBRouteRequest *)request
+{
+  XCUIDeviceButton button = (XCUIDeviceButton)[request.arguments[@"button"] integerValue];
+ 
+  XCUIDevice *device = [XCUIDevice sharedDevice];
+  [device pressButton:button];
+  
   return FBResponseWithOK();
 }
 @end
