@@ -59,9 +59,9 @@
     [[FBRoute POST:@"/wda/apps/launchUnattached"].withoutSession respondWithTarget:self action:@selector(handleLaunchUnattachedApp:)],
     [[FBRoute GET:@"/wda/device/info"] respondWithTarget:self action:@selector(handleGetDeviceInfo:)],
     [[FBRoute OPTIONS:@"/*"].withoutSession respondWithTarget:self action:@selector(handlePingCommand:)],
+    [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
   ];
 }
-
 
 #pragma mark - Commands
 
@@ -356,6 +356,17 @@
   }
 
   return [localTimeZone name];
+}
+
++ (id<FBResponsePayload>)handleTypeCommand:(FBRouteRequest *)request
+{
+  NSError *error;
+  NSString *text = request.arguments[@"text"];
+
+  if (![FBKeyboard typeText:text frequency:[FBConfiguration maxTypingFrequency] error:&error]) {
+    return FBResponseWithUnknownError(error);
+  }
+  return FBResponseWithOK();
 }
 
 @end
