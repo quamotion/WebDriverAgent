@@ -51,9 +51,9 @@
     [[FBRoute POST:@"/wda/setPasteboard"] respondWithTarget:self action:@selector(handleSetPasteboard:)],
     [[FBRoute POST:@"/wda/getPasteboard"] respondWithTarget:self action:@selector(handleGetPasteboard:)],
     [[FBRoute GET:@"/wda/batteryInfo"] respondWithTarget:self action:@selector(handleGetBatteryInfo:)],
+    [[FBRoute POST:@"/wda/keyboard/type"] respondWithTarget:self action:@selector(handleTypeCommand:)],
   ];
 }
-
 
 #pragma mark - Commands
 
@@ -189,6 +189,17 @@
     @"level": @([UIDevice currentDevice].batteryLevel),
     @"state": @([UIDevice currentDevice].batteryState)
   });
+}
+
++ (id<FBResponsePayload>)handleTypeCommand:(FBRouteRequest *)request
+{
+  NSError *error;
+  NSString *text = request.arguments[@"text"];
+
+  if (![FBKeyboard typeText:text frequency:[FBConfiguration maxTypingFrequency] error:&error]) {
+    return FBResponseWithError(error);
+  }
+  return FBResponseWithOK();
 }
 
 @end
