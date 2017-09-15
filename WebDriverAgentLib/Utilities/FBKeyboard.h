@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 */
 + (BOOL)typeText:(NSString *)text error:(NSError **)error;
 
++ (BOOL)typeText:(NSString *)text waitForKeyboard:(BOOL)waitUntilVisible error:(NSError **)error;
+
 @end
 
 NS_ASSUME_NONNULL_END
