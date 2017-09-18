@@ -8,13 +8,23 @@ cache:
   - Inspector/node_modules
 
 install:
-- pip install --user azure-cli
+  - pip install --user azure-cli
+  - wget https://download.microsoft.com/download/0/F/D/0FD852A4-7EA1-4E2A-983A-0484AC19B92C/dotnet-sdk-2.0.0-osx-gs-x64.pkg -O ~/dotnet-sdk-2.0.0-osx-gs-x64.pkg
+  - sudo installer -pkg ~/dotnet-sdk-2.0.0-osx-gs-x64.pkg -target /
+  - PATH="/usr/local/share/dotnet/:$PATH"
+  - dotnet --version
 
 script:
   - ./Scripts/bootstrap.sh
   - ./signing/add-key.sh
   - ./build-ipa.sh
+  - cd Quamotion.WebDriverAgent
+  - cp ../out/WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip ./WebDriverAgent.zip
+  - dotnet build -c Release /p:VersionSuffix=-r$TRAVIS_BUILD_NUMBER
+  - dotnet pack -c Release /p:VersionSuffix=-r$TRAVIS_BUILD_NUMBER
+  - cd ..
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then az=$HOME/Library/Python/2.7/bin/az; fi
   - $az storage blob upload -f ./out/WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip -c webdriveragent -n WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip
+  - $az storage blob upload -f ./Quamotion.WebDriverAgent/bin/Release/Quamotion.WebDriverAgent.1.0.0-r$TRAVIS_BUILD_NUMBER.nupkg -c webdriveragent -n Quamotion.WebDriverAgent.1.0.0-r$TRAVIS_BUILD_NUMBER.nupkg
