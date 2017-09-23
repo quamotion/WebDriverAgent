@@ -20,8 +20,8 @@ script:
   - ./build-ipa.sh
   - cd Quamotion.WebDriverAgent
   - cp ../out/WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip ./WebDriverAgent.zip
-  - dotnet build -c Release /p:VersionSuffix=-r$TRAVIS_BUILD_NUMBER
-  - dotnet pack -c Release /p:VersionSuffix=-r$TRAVIS_BUILD_NUMBER
+  - dotnet build -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
+  - dotnet pack -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
   - cd ..
 
 after_success:
