@@ -1,3 +1,4 @@
+rm -rf ./out
 mkdir ./out
 xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -sdk iphoneos -configuration Release -derivedDataPath ./out
 mkdir -p ./out/ipa/Payload
