@@ -22,6 +22,7 @@ script:
   - cp ../out/WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip ./WebDriverAgent.zip
   - dotnet build -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
   - dotnet pack -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
+  - dotnet nuget push bin/Release/Quamotion.WebDriverAgent.1.0.0-r$TRAVIS_BUILD_NUMBER.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
   - cd ..
 
 after_success:
