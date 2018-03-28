@@ -9,7 +9,7 @@
 
 #import "FBElementCache.h"
 
-#import "LRUCache.h"
+#import <YYCache/YYCache.h>
 #import "FBAlert.h"
 #import "XCUIElement.h"
 #import "XCUIElement+FBUtilities.h"
@@ -17,7 +17,7 @@
 const int ELEMENT_CACHE_SIZE = 1024;
 
 @interface FBElementCache ()
-@property (atomic, strong) LRUCache *elementCache;
+@property (atomic, strong) YYMemoryCache *elementCache;
 @end
 
 @implementation FBElementCache
@@ -28,7 +28,8 @@ const int ELEMENT_CACHE_SIZE = 1024;
   if (!self) {
     return nil;
   }
-  _elementCache = [[LRUCache alloc] initWithCapacity:ELEMENT_CACHE_SIZE];
+  _elementCache = [[YYMemoryCache alloc] init];
+  _elementCache.countLimit = ELEMENT_CACHE_SIZE;
   return self;
 }
 
