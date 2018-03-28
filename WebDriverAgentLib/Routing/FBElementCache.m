@@ -9,13 +9,14 @@
 
 #import "FBElementCache.h"
 
+#import "LRUCache.h"
 #import "FBAlert.h"
 #import "XCUIElement.h"
 #import "XCUIElement+FBUtilities.h"
 
 
 @interface FBElementCache ()
-@property (atomic, strong) NSMutableDictionary *elementCache;
+@property (atomic, strong) LRUCache *elementCache;
 @end
 
 @implementation FBElementCache
@@ -26,14 +27,14 @@
   if (!self) {
     return nil;
   }
-  _elementCache = [[NSMutableDictionary alloc] init];
+  _elementCache = [[LRUCache alloc] initWithCapacity:1024];
   return self;
 }
 
 - (NSString *)storeElement:(XCUIElement *)element
 {
   NSString *uuid = [[NSUUID UUID] UUIDString];
-  self.elementCache[uuid] = element;
+  [self.elementCache setObject:element forKey:uuid];
   return uuid;
 }
 
@@ -42,7 +43,7 @@
   if (!uuid) {
     return nil;
   }
-  XCUIElement *element = self.elementCache[uuid];
+  XCUIElement *element = [self.elementCache objectForKey:uuid];
   [element resolve];
   return element;
 }

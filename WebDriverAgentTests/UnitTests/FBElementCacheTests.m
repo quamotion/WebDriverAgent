@@ -53,4 +53,65 @@
   XCTAssertTrue(element.didResolve);
 }
 
+- (void)testLinearCacheExpulsion
+{
+  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:1050];
+  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:1050];
+  for(int i = 0; i < 1050; i++) {
+    [elements addObject:(XCUIElement *)XCUIElementDouble.new];
+  }
+  
+  // The capacity of the cache is limited to 1024 elements. Add 1050
+  // elements and make sure:
+  // - The first 26 elements are no longer present in the cache
+  // - The remaining 1024 elements are present in the cache
+  for(int i = 0; i < 1050; i++) {
+    [elementIds addObject:[self.cache storeElement:elements[i]]];
+  }
+  
+  for(int i = 0; i < 26; i++) {
+    XCTAssertNil([self.cache elementForUUID:elementIds[i]]);
+  }
+  for(int i = 27; i < 1050; i++) {
+    XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
+  }
+}
+
+- (void)testMRUCacheExpulsion
+{
+  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:1050];
+  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:1050];
+  for(int i = 0; i < 1050; i++) {
+    [elements addObject:(XCUIElement *)XCUIElementDouble.new];
+  }
+  
+  // The capacity of the cache is limited to 1024 elements. Add 1050
+  // elements, but with a twist: access the first 24 elements before
+  // adding the last 50 elements. Then, make sure:
+  // - The first 24 elements are present in the cache
+  // - The next 26 elements are not present in the cache
+  // - The remaining 1000 elements are present in the cache
+  for(int i = 0; i < 1000; i++) {
+    [elementIds addObject:[self.cache storeElement:elements[i]]];
+  }
+  
+  for(int i = 0; i <= 24; i++) {
+    [self.cache elementForUUID:elementIds[i]];
+  }
+     
+  for(int i = 1000; i < 1050; i++) {
+    [elementIds addObject:[self.cache storeElement:elements[i]]];
+  }
+  
+  for(int i = 0; i < 24; i++) {
+    XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
+  }
+  for(int i = 25; i < 51; i++) {
+    XCTAssertNil([self.cache elementForUUID:elementIds[i]]);
+  }
+  for(int i = 51; i < 1050; i++) {
+    XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
+  }
+}
+
 @end
