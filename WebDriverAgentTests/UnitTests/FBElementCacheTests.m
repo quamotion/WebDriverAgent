@@ -55,9 +55,11 @@
 
 - (void)testLinearCacheExpulsion
 {
-  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:1050];
-  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:1050];
-  for(int i = 0; i < 1050; i++) {
+  const int ELEMENT_COUNT = 1050;
+  
+  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:ELEMENT_COUNT];
+  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:ELEMENT_COUNT];
+  for(int i = 0; i < ELEMENT_COUNT; i++) {
     [elements addObject:(XCUIElement *)XCUIElementDouble.new];
   }
   
@@ -65,23 +67,26 @@
   // elements and make sure:
   // - The first 26 elements are no longer present in the cache
   // - The remaining 1024 elements are present in the cache
-  for(int i = 0; i < 1050; i++) {
+  for(int i = 0; i < ELEMENT_COUNT; i++) {
     [elementIds addObject:[self.cache storeElement:elements[i]]];
   }
   
-  for(int i = 0; i < 26; i++) {
+  for(int i = 0; i < ELEMENT_COUNT - ELEMENT_CACHE_SIZE; i++) {
     XCTAssertNil([self.cache elementForUUID:elementIds[i]]);
   }
-  for(int i = 27; i < 1050; i++) {
+  for(int i = ELEMENT_COUNT - ELEMENT_CACHE_SIZE; i < ELEMENT_COUNT; i++) {
     XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
   }
 }
 
 - (void)testMRUCacheExpulsion
 {
-  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:1050];
-  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:1050];
-  for(int i = 0; i < 1050; i++) {
+  const int ELEMENT_COUNT = 1050;
+  const int ACCESSED_ELEMENT_COUNT = 24;
+  
+  NSMutableArray *elements = [NSMutableArray arrayWithCapacity:ELEMENT_COUNT];
+  NSMutableArray *elementIds = [NSMutableArray arrayWithCapacity:ELEMENT_COUNT];
+  for(int i = 0; i < ELEMENT_COUNT; i++) {
     [elements addObject:(XCUIElement *)XCUIElementDouble.new];
   }
   
@@ -91,25 +96,25 @@
   // - The first 24 elements are present in the cache
   // - The next 26 elements are not present in the cache
   // - The remaining 1000 elements are present in the cache
-  for(int i = 0; i < 1000; i++) {
+  for(int i = 0; i < ELEMENT_CACHE_SIZE; i++) {
     [elementIds addObject:[self.cache storeElement:elements[i]]];
   }
   
-  for(int i = 0; i <= 24; i++) {
+  for(int i = 0; i < ACCESSED_ELEMENT_COUNT; i++) {
     [self.cache elementForUUID:elementIds[i]];
   }
      
-  for(int i = 1000; i < 1050; i++) {
+  for(int i = ELEMENT_CACHE_SIZE; i < ELEMENT_COUNT; i++) {
     [elementIds addObject:[self.cache storeElement:elements[i]]];
   }
   
-  for(int i = 0; i < 24; i++) {
+  for(int i = 0; i < ACCESSED_ELEMENT_COUNT; i++) {
     XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
   }
-  for(int i = 25; i < 51; i++) {
+  for(int i = ACCESSED_ELEMENT_COUNT; i < ELEMENT_COUNT - ELEMENT_CACHE_SIZE + ACCESSED_ELEMENT_COUNT; i++) {
     XCTAssertNil([self.cache elementForUUID:elementIds[i]]);
   }
-  for(int i = 51; i < 1050; i++) {
+  for(int i = ELEMENT_COUNT - ELEMENT_CACHE_SIZE + ACCESSED_ELEMENT_COUNT; i < ELEMENT_COUNT; i++) {
     XCTAssertEqual(elements[i], [self.cache elementForUUID:elementIds[i]]);
   }
 }

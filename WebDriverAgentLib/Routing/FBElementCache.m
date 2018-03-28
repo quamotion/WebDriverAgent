@@ -14,6 +14,7 @@
 #import "XCUIElement.h"
 #import "XCUIElement+FBUtilities.h"
 
+const int ELEMENT_CACHE_SIZE = 1024;
 
 @interface FBElementCache ()
 @property (atomic, strong) LRUCache *elementCache;
@@ -27,7 +28,7 @@
   if (!self) {
     return nil;
   }
-  _elementCache = [[LRUCache alloc] initWithCapacity:1024];
+  _elementCache = [[LRUCache alloc] initWithCapacity:ELEMENT_CACHE_SIZE];
   return self;
 }
 
