@@ -90,7 +90,7 @@
   return [FBElementTypeTransformer stringWithElementType:self.elementType];
 }
 
-- (NSUInteger)wdUID
+- (NSString *)wdUID
 {
   return self.fb_uid;
 }
