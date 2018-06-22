@@ -15,13 +15,15 @@
 
 @interface XCUIElementDouble : NSObject<FBElement>
 @property (nonatomic, strong, nonnull) XCUIApplication *application;
+@property (nonatomic, readwrite, assign) CGRect frame;
 @property (nonatomic, assign) BOOL fb_isObstructedByAlert;
 @property (nonatomic, readwrite, copy, nonnull) NSDictionary *wdRect;
 @property (nonatomic, readwrite, assign) CGRect wdFrame;
+@property (nonatomic, readwrite, assign) NSUInteger wdUID;
 @property (nonatomic, copy, readwrite, nullable) NSString *wdName;
 @property (nonatomic, copy, readwrite, nullable) NSString *wdLabel;
 @property (nonatomic, copy, readwrite, nonnull) NSString *wdType;
-@property (nonatomic, strong, readwrite, nullable) id wdValue;
+@property (nonatomic, strong, readwrite, nullable) NSString *wdValue;
 @property (nonatomic, readwrite, getter=isWDEnabled) BOOL wdEnabled;
 @property (nonatomic, readwrite, getter=isWDVisible) BOOL wdVisible;
 @property (nonatomic, readwrite, getter=isWDAccessible) BOOL wdAccessible;

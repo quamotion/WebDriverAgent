@@ -13,6 +13,7 @@
 #import "FBIntegrationTestCase.h"
 #import "FBSpringboardApplication.h"
 #import "FBTestMacros.h"
+#import "FBXCodeCompatibility.h"
 #import "XCUIElement+FBIsVisible.h"
 
 @interface FBElementVisibilityTests : FBIntegrationTestCase
@@ -22,6 +23,10 @@
 
 - (void)testSpringBoardIcons
 {
+  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    return;
+  }
+  [self launchApplication];
   [self goToSpringBoardFirstPage];
 
   // Check Icons on first screen
@@ -29,7 +34,6 @@
   XCTAssertTrue(self.springboard.icons[@"Reminders"].fb_isVisible);
 
   // Check Icons on second screen screen
-  XCTAssertFalse(self.springboard.icons[@"iCloud Drive"].fb_isVisible);
   XCTAssertFalse(self.springboard.icons[@"IntegrationApp"].fb_isVisible);
 }
 
@@ -38,42 +42,32 @@
   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
     return;
   }
+  [self launchApplication];
   [self goToSpringBoardExtras];
   XCTAssertFalse(self.springboard.icons[@"Extras"].otherElements[@"Contacts"].fb_isVisible);
 }
 
-- (void)testExtrasIconContent
-{
-  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-    return;
-  }
-  [self goToSpringBoardExtras];
-  [self.springboard.icons[@"Extras"] tap];
-  FBAssertWaitTillBecomesTrue(self.springboard.icons[@"Contacts"].fb_isVisible);
-  NSArray *elements = self.springboard.pageIndicators.allElementsBoundByIndex;
-  for (XCUIElement *element in elements) {
-    XCTAssertFalse(element.fb_isVisible);
-  }
-}
-
 - (void)testIconsFromSearchDashboard
 {
+  [self launchApplication];
   [self goToSpringBoardDashboard];
   XCTAssertFalse(self.springboard.icons[@"Reminders"].fb_isVisible);
-  XCTAssertFalse(self.springboard.icons[@"iCloud Drive"].fb_isVisible);
-  XCTAssertFalse(self.springboard.icons[@"IntegrationApp"].fb_isVisible);
+  XCTAssertFalse([[[self.springboard descendantsMatchingType:XCUIElementTypeIcon]
+                   matchingIdentifier:@"IntegrationApp"]
+                  fb_firstMatch].fb_isVisible);
 }
 
 - (void)testTableViewCells
 {
+  [self launchApplication];
   [self goToScrollPageWithCells:YES];
   for (int i = 0 ; i < 10 ; i++) {
-    XCTAssertTrue(self.testedApplication.cells.allElementsBoundByIndex[i].fb_isVisible);
-    XCTAssertTrue(self.testedApplication.staticTexts.allElementsBoundByIndex[i].fb_isVisible);
+    FBAssertWaitTillBecomesTrue(self.testedApplication.cells.allElementsBoundByIndex[i].fb_isVisible);
+    FBAssertWaitTillBecomesTrue(self.testedApplication.staticTexts.allElementsBoundByIndex[i].fb_isVisible);
   }
   for (int i = 30 ; i < 40 ; i++) {
-    XCTAssertFalse(self.testedApplication.cells.allElementsBoundByIndex[i].fb_isVisible);
-    XCTAssertFalse(self.testedApplication.staticTexts.allElementsBoundByIndex[i].fb_isVisible);
+    FBAssertWaitTillBecomesTrue(!self.testedApplication.cells.allElementsBoundByIndex[i].fb_isVisible);
+    FBAssertWaitTillBecomesTrue(!self.testedApplication.staticTexts.allElementsBoundByIndex[i].fb_isVisible);
   }
 }
 

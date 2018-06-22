@@ -12,7 +12,9 @@
 #import "FBApplication.h"
 #import "FBConfiguration.h"
 #import "FBMathUtils.h"
+#import "FBXCodeCompatibility.h"
 #import "XCElementSnapshot+FBHelpers.h"
+#import "XCUIElement+FBUtilities.h"
 #import "XCTestPrivateSymbols.h"
 #import <XCTest/XCUIDevice.h>
 #import "XCElementSnapshot+FBHitPoint.h"
@@ -21,10 +23,7 @@
 
 - (BOOL)fb_isVisible
 {
-  if (!self.lastSnapshot) {
-    [self resolve];
-  }
-  return self.lastSnapshot.fb_isVisible;
+  return self.fb_lastSnapshot.fb_isVisible;
 }
 
 @end
@@ -33,18 +32,33 @@
 
 - (BOOL)fb_isVisible
 {
-  if (CGRectIsEmpty(self.frame) || CGRectIsEmpty(self.visibleFrame)) {
+  CGRect frame = self.frame;
+  if (CGRectIsEmpty(frame)) {
     return NO;
   }
   if ([FBConfiguration shouldUseTestManagerForVisibilityDetection]) {
     return [(NSNumber *)[self fb_attributeValue:FB_XCAXAIsVisibleAttribute] boolValue];
   }
-  XCElementSnapshot *app = [self _rootElement];
-  CGSize screenSize = FBAdjustDimensionsForApplication(app.frame.size, (UIInterfaceOrientation)[XCUIDevice sharedDevice].orientation);
+  CGRect appFrame = [self fb_rootElement].frame;
+  CGSize screenSize = FBAdjustDimensionsForApplication(appFrame.size, self.application.interfaceOrientation);
   CGRect screenFrame = CGRectMake(0, 0, screenSize.width, screenSize.height);
-  BOOL rectIntersects = CGRectIntersectsRect(self.visibleFrame, screenFrame);
-  BOOL isActionable = CGRectContainsPoint(app.frame, self.fb_hitPoint);
-  return rectIntersects && isActionable;
+  if (!CGRectIntersectsRect(frame, screenFrame)) {
+    return NO;
+  }
+  CGPoint midPoint = [self.suggestedHitpoints.lastObject CGPointValue];
+  XCElementSnapshot *hitElement = [self hitTest:midPoint];
+  if (self == hitElement || [self._allDescendants.copy containsObject:hitElement]) {
+    return YES;
+  }
+  if (CGRectContainsPoint(appFrame, self.fb_hitPoint)) {
+    return YES;
+  }
+  for (XCElementSnapshot *elementSnapshot in self.children.copy) {
+    if (elementSnapshot.fb_isVisible) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 @end

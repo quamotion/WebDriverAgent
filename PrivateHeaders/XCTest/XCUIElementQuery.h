@@ -35,7 +35,7 @@
 - (id)matchingSnapshotsWithError:(id *)arg1;
 - (id)matchingSnapshotsHandleUIInterruption:(BOOL)arg1 withError:(id *)arg2;
 - (id)_elementMatchingAccessibilityElementOfSnapshot:(id)arg1;
-
+- (XCElementSnapshot *)elementSnapshotForDebugDescription;
 - (id)_containingPredicate:(id)arg1 queryDescription:(id)arg2;
 - (id)_predicateWithType:(unsigned long long)arg1 identifier:(id)arg2;
 - (id)_queryWithPredicate:(id)arg1;
@@ -47,5 +47,8 @@
 - (id)_derivedExpressedIdentifiers;
 - (unsigned long long)_derivedExpressedType;
 - (id)initWithInputQuery:(id)arg1 queryDescription:(id)arg2 filter:(CDUnknownBlockType)arg3;
+
+/*! DO NOT USE DIRECTLY! Please use fb_firstMatch instead */
+- (XCUIElement *)firstMatch;
 
 @end

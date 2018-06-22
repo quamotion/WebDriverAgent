@@ -12,6 +12,8 @@
 #import "FBSpringboardApplication.h"
 #import "FBTestMacros.h"
 #import "FBIntegrationTestCase.h"
+#import "FBConfiguration.h"
+#import "FBMacros.h"
 #import "FBRunLoopSpinner.h"
 #import "XCUIDevice+FBRotation.h"
 #import "XCUIElement.h"
@@ -30,9 +32,15 @@ NSString *const FBShowSheetAlertButtonName = @"Create Sheet Alert";
 - (void)setUp
 {
   [super setUp];
+  [FBConfiguration disableRemoteQueryEvaluation];
+  [FBConfiguration disableAttributeKeyPathAnalysis];
   self.continueAfterFailure = NO;
   self.springboard = [FBSpringboardApplication fb_springboard];
   self.testedApplication = [XCUIApplication new];
+}
+
+- (void)launchApplication
+{
   [self.testedApplication launch];
   FBAssertWaitTillBecomesTrue(self.testedApplication.buttons[@"Alerts"].fb_isVisible);
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
@@ -55,6 +63,7 @@ NSString *const FBShowSheetAlertButtonName = @"Create Sheet Alert";
 {
   [self.testedApplication.buttons[@"Alerts"] tap];
   FBAssertWaitTillBecomesTrue(self.testedApplication.buttons[FBShowAlertButtonName].fb_isVisible);
+  FBAssertWaitTillBecomesTrue(self.testedApplication.buttons[FBShowSheetAlertButtonName].fb_isVisible);
 }
 
 - (void)goToSpringBoardFirstPage
@@ -76,7 +85,13 @@ NSString *const FBShowSheetAlertButtonName = @"Create Sheet Alert";
 {
   [self goToSpringBoardFirstPage];
   [self.springboard swipeRight];
-  FBAssertWaitTillBecomesTrue(self.springboard.navigationBars[@"SBSearchEtceteraIsolatedView"].fb_isVisible);
+  NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:
+     @"%K IN %@",
+     FBStringify(XCUIElement, identifier),
+     @[@"SBSearchEtceteraIsolatedView", @"SpotlightSearchField"]
+   ];
+  FBAssertWaitTillBecomesTrue([[self.springboard descendantsMatchingType:XCUIElementTypeAny] elementMatchingPredicate:predicate].fb_isVisible);
   FBAssertWaitTillBecomesTrue(!self.springboard.icons[@"Calendar"].fb_isVisible);
 }
 

@@ -36,6 +36,9 @@ static FBSession *_activeSession;
 
 + (void)markSessionActive:(FBSession *)session
 {
+  if (_activeSession && _activeSession.testedApplication.bundleID != session.testedApplication.bundleID) {
+    [_activeSession kill];
+  }
   _activeSession = session;
 }
 
@@ -68,14 +71,10 @@ static FBSession *_activeSession;
 
 - (FBApplication *)application
 {
-  FBApplication *application = [FBApplication fb_activeApplication];
-  const BOOL testedApplicationIsActiveAndNotRunning = (application.processID == self.testedApplication.processID && !application.running);
-  if (testedApplicationIsActiveAndNotRunning) {
+  if (self.testedApplication && !self.testedApplication.running) {
     [[NSException exceptionWithName:FBApplicationCrashedException reason:@"Application is not running, possibly crashed" userInfo:nil] raise];
   }
-  [application query];
-  [application resolve];
-  return application;
+  return [FBApplication fb_activeApplication] ?: self.testedApplication;
 }
 
 @end

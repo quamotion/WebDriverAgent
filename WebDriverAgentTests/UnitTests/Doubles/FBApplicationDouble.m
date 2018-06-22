@@ -15,6 +15,15 @@
 
 @implementation FBApplicationDouble
 
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
+    _bundleID = @"some.bundle.identifier";
+  }
+  return self;
+}
+
 - (void)terminate
 {
   self.didTerminate = YES;
@@ -23,6 +32,11 @@
 - (NSUInteger)processID
 {
   return 0;
+}
+
+- (NSString *)bundleID
+{
+  return @"com.facebook.awesome";
 }
 
 - (void)resolve

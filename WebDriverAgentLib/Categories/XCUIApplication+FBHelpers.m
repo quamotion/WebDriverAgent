@@ -13,9 +13,11 @@
 #import "XCElementSnapshot.h"
 #import "FBElementTypeTransformer.h"
 #import "FBMacros.h"
+#import "FBXCodeCompatibility.h"
 #import "XCElementSnapshot+FBHelpers.h"
 #import "XCUIDevice+FBHelpers.h"
 #import "XCUIElement+FBIsVisible.h"
+#import "XCUIElement+FBUtilities.h"
 #import "XCUIElement+FBWebDriverAttributes.h"
 
 const static NSTimeInterval FBMinimumAppSwitchWait = 3.0;
@@ -29,29 +31,24 @@ const static NSTimeInterval FBMinimumAppSwitchWait = 3.0;
     return NO;
   }
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:MAX(duration, FBMinimumAppSwitchWait)]];
-  if (![[FBSpringboardApplication fb_springboard] fb_tapApplicationWithIdentifier:applicationIdentifier error:error]) {
-    return NO;
+  if (self.fb_isActivateSupported) {
+    [self fb_activate];
+    return YES;
   }
-  return YES;
-}
-
-- (XCElementSnapshot *)fb_mainWindowSnapshot
-{
-  NSArray<XCElementSnapshot *> *mainWindows = [self.lastSnapshot descendantsByFilteringWithBlock:^BOOL(XCElementSnapshot *snapshot) {
-    return snapshot.isMainWindow;
-  }];
-  return mainWindows.lastObject;
+  return [[FBSpringboardApplication fb_springboard] fb_tapApplicationWithIdentifier:applicationIdentifier error:error];
 }
 
 - (NSDictionary *)fb_tree
 {
-  return [self.class dictionaryForElement:self.lastSnapshot];
+  [self fb_waitUntilSnapshotIsStable];
+  return [self.class dictionaryForElement:self.fb_lastSnapshot];
 }
 
 - (NSDictionary *)fb_accessibilityTree
 {
+  [self fb_waitUntilSnapshotIsStable];
   // We ignore all elements except for the main window for accessibility tree
-  return [self.class accessibilityInfoForElement:self.fb_mainWindowSnapshot];
+  return [self.class accessibilityInfoForElement:self.fb_lastSnapshot];
 }
 
 + (NSDictionary *)dictionaryForElement:(XCElementSnapshot *)snapshot

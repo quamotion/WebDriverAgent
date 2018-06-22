@@ -10,13 +10,14 @@
 #import <XCTest/XCTest.h>
 
 #import "FBIntegrationTestCase.h"
+#import "FBTestMacros.h"
 
 #import "XCUIElement+FBIsVisible.h"
 #import "XCUIElement+FBScrolling.h"
 
 #define FBCellElementWithLabel(label) ([self.testedApplication descendantsMatchingType:XCUIElementTypeAny][label])
-#define FBAssertVisibleCell(label) XCTAssertTrue(FBCellElementWithLabel(label).fb_isVisible, @"Cell %@ should be visible", label)
-#define FBAssertInvisibleCell(label) XCTAssertFalse(FBCellElementWithLabel(label).fb_isVisible, @"Cell %@ should be invisible", label)
+#define FBAssertVisibleCell(label) FBAssertWaitTillBecomesTrue(FBCellElementWithLabel(label).fb_isVisible)
+#define FBAssertInvisibleCell(label) FBAssertWaitTillBecomesTrue(!FBCellElementWithLabel(label).fb_isVisible)
 
 @interface FBScrollingTests : FBIntegrationTestCase
 @property (nonatomic, strong) XCUIElement *scrollView;
@@ -32,7 +33,8 @@
 - (void)setUp
 {
   [super setUp];
-  [self goToScrollPageWithCells:[self.class shouldShowCells]];
+  [self launchApplication];
+  [self goToScrollPageWithCells:NO];
   self.scrollView = [[self.testedApplication.query descendantsMatchingType:XCUIElementTypeAny] matchingIdentifier:@"scrollView"].element;
   [self.scrollView resolve];
 }
@@ -49,11 +51,11 @@
 {
   FBAssertVisibleCell(@"0");
   FBAssertVisibleCell(@"10");
-  [self.scrollView fb_scrollDown];
+  [self.scrollView fb_scrollDownByNormalizedDistance:1.0];
   FBAssertInvisibleCell(@"0");
   FBAssertInvisibleCell(@"10");
   XCTAssertTrue(self.testedApplication.staticTexts.count > 0);
-  [self.scrollView fb_scrollUp];
+  [self.scrollView fb_scrollUpByNormalizedDistance:1.0];
   FBAssertVisibleCell(@"0");
   FBAssertVisibleCell(@"10");
 }
@@ -76,18 +78,6 @@
   XCTAssertTrue([FBCellElementWithLabel(cellName) fb_scrollToVisibleWithError:&error]);
   XCTAssertNil(error);
   FBAssertVisibleCell(cellName);
-}
-
-@end
-
-@interface FBNoCellScrollingTests : FBScrollingTests
-@end
-
-@implementation FBNoCellScrollingTests
-
-+ (BOOL)shouldShowCells
-{
-  return NO;
 }
 
 @end

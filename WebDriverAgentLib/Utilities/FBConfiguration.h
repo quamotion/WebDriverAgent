@@ -20,15 +20,19 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setShouldUseTestManagerForVisibilityDetection:(BOOL)value;
 + (BOOL)shouldUseTestManagerForVisibilityDetection;
 
+/*! If set to YES will use compact & faster responses */
++ (void)setShouldUseCompactResponses:(BOOL)value;
++ (BOOL)shouldUseCompactResponses;
+
+/*! Disables remote query evaluation making Xcode 9.x tests behave same as Xcode 8.x test */
++ (void)disableRemoteQueryEvaluation;
+
+/*! Disables attribute key path analysis, which will cause XCTest on Xcode 9.x to ignore some elements */
++ (void)disableAttributeKeyPathAnalysis;
+
 /* The maximum typing frequency for all typing activities */
 + (void)setMaxTypingFrequency:(NSUInteger)value;
 + (NSUInteger)maxTypingFrequency;
-
-/**
- Switch for enabling/disabling reporting fake collection view cells by Accessibility framework.
- If set to YES it will report also invisible cells.
- */
-+ (void)shouldShowFakeCollectionViewCells:(BOOL)showFakeCells;
 
 /**
  The range of ports that the HTTP Server should attempt to bind on launch

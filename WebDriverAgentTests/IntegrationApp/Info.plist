@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.facebook.wda.integrationApp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -25,6 +25,8 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Yo Yo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Yo Yo</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Yo Yo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Yo Yo</string>

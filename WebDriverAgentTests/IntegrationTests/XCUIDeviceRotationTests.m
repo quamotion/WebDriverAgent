@@ -8,6 +8,7 @@
  */
 
 #import <XCTest/XCTest.h>
+#import <UIKit/UIKit.h>
 #import "FBIntegrationTestCase.h"
 #import "XCUIDevice+FBRotation.h"
 
@@ -17,18 +18,24 @@
 
 @implementation XCUIDeviceRotationTests
 
+- (void)setUp
+{
+  [super setUp];
+  [self launchApplication];
+}
+
 - (void)testLandscapeRightOrientation
 {
   BOOL success = [[XCUIDevice sharedDevice] fb_setDeviceInterfaceOrientation:UIDeviceOrientationLandscapeRight];
   XCTAssertTrue(success, @"Device should support LandscapeRight");
-  XCTAssertEqual(UIDeviceOrientationLandscapeRight, [XCUIDevice sharedDevice].orientation, @"Device should be in landscape left mode");
+  XCTAssertTrue(self.testedApplication.staticTexts[@"LandscapeLeft"].exists); // Device rotation gives opposite interface rotation
 }
 
 - (void)testLandscapeLeftOrientation
 {
   BOOL success = [[XCUIDevice sharedDevice] fb_setDeviceInterfaceOrientation:UIDeviceOrientationLandscapeLeft];
   XCTAssertTrue(success, @"Device should support LandscapeLeft");
-  XCTAssertEqual(UIDeviceOrientationLandscapeLeft, [XCUIDevice sharedDevice].orientation, @"Device should be in landscape right mode");
+  XCTAssertTrue(self.testedApplication.staticTexts[@"LandscapeRight"].exists); // Device rotation gives opposite interface rotation
 }
 
 - (void)testLandscapeRightRotation
@@ -39,7 +46,7 @@
     @"z" : @(90)
   }];
   XCTAssertTrue(success, @"Device should support LandscapeRight");
-  XCTAssertEqual(UIDeviceOrientationLandscapeRight, [XCUIDevice sharedDevice].orientation, @"Device should be in landscape left mode");
+  XCTAssertTrue(self.testedApplication.staticTexts[@"LandscapeLeft"].exists); // Device rotation gives opposite interface rotation
 }
 
 - (void)testLandscapeLeftRotation
@@ -50,7 +57,7 @@
     @"z" : @(270)
   }];
   XCTAssertTrue(success, @"Device should support LandscapeLeft");
-  XCTAssertEqual(UIDeviceOrientationLandscapeLeft, [XCUIDevice sharedDevice].orientation, @"Device should be in landscape right mode");
+  XCTAssertTrue(self.testedApplication.staticTexts[@"LandscapeRight"].exists); // Device rotation gives opposite interface rotation
 }
 
 - (void)testRotationTiltRotation
