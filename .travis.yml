@@ -1,5 +1,13 @@
 language: objective-c
-osx_image: xcode9.4
+matrix:
+  include:
+  - osx_image: xcode10
+    env: PUBLISH_NUGET=yes
+  - osx_image: xcode9.4
+  - osx_image: xcode9.3
+  - osx_image: xcode9.2
+  - osx_image: xcode9.1
+  - osx_image: xcode9
 
 cache:
   directories:
@@ -19,6 +27,6 @@ script:
   - ./build-ipa.sh
   - cd Quamotion.WebDriverAgent
   - cp ../out/WebDriverAgent-$TRAVIS_BUILD_NUMBER.zip ./WebDriverAgent.zip
-  - dotnet build -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
-  - dotnet pack -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER
-  - dotnet nuget push bin/Release/Quamotion.WebDriverAgent.1.0.0-r$TRAVIS_BUILD_NUMBER.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
+  - dotnet build -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER-$osx_image
+  - dotnet pack -c Release /p:VersionSuffix=r$TRAVIS_BUILD_NUMBER-$osx_image
+#  - dotnet nuget push bin/Release/Quamotion.WebDriverAgent.1.0.0-r$TRAVIS_BUILD_NUMBER-$osx_image.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
