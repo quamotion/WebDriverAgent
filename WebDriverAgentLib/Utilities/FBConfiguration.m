@@ -18,6 +18,8 @@
 
 static NSUInteger const DefaultStartingPort = 8100;
 static NSUInteger const DefaultMjpegServerPort = 9100;
+static NSUInteger const DefaultMjpegServerScreenshotQuality = 25;
+static NSUInteger const DefaultMjpegServerFramerate = 10;
 static NSUInteger const DefaultPortRange = 100;
 
 static BOOL FBShouldUseTestManagerForVisibilityDetection = NO;
@@ -65,6 +67,26 @@ static NSUInteger FBMaxTypingFrequency = 60;
   }
 
   return DefaultMjpegServerPort;
+}
+
++ (NSInteger)mjpegServerFramerate
+{
+  if (NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_FRAMERATE"] &&
+      [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_FRAMERATE"] length] > 0) {
+    return [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_FRAMERATE"] integerValue];
+  }
+
+  return DefaultMjpegServerFramerate;
+}
+
++ (NSInteger)mjpegServerScreenshotQuality
+{
+  if (NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_QUALITY"] &&
+      [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_QUALITY"] length] > 0) {
+    return [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_QUALITY"] integerValue];
+  }
+
+  return DefaultMjpegServerScreenshotQuality;
 }
 
 + (BOOL)verboseLoggingEnabled
