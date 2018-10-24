@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       systemAttachmentLifetime = "keepNever"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
@@ -48,7 +47,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -68,6 +66,16 @@
          <EnvironmentVariable
             key = "USE_PORT"
             value = "$(USE_PORT)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "MJPEG_SERVER_FRAMERATE"
+            value = "$(MJPEG_SERVER_FRAMERATE)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "MJPEG_SERVER_SCREENSHOT_QUALITY"
+            value = "$(MJPEG_SERVER_SCREENSHOT_QUALITY)"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

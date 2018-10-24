@@ -16,10 +16,9 @@
 #import "FBMathUtils.h"
 #import "XCTestManager_ManagerInterface-Protocol.h"
 #import "FBXCTestDaemonsProxy.h"
+#import "FBConfiguration.h"
 
-static const NSUInteger FPS = 10;
 static const NSTimeInterval SCREENSHOT_TIMEOUT = 0.5;
-static const CGFloat SCREENSHOT_QUALITY = 0.25;
 
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
@@ -47,7 +46,13 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
       [FBLogger log:@"MJPEG server cannot start because the current iOS version is not supported"];
       return self;
     }
-    _mainTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / FPS repeats:YES block:^(NSTimer * _Nonnull timer) {
+    NSTimeInterval interval;
+    if (FBConfiguration.mjpegServerFramerate > 0) {
+      interval = 1.0 / FBConfiguration.mjpegServerFramerate;
+    } else {
+      interval = 0;
+    }
+    _mainTimer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:YES block:^(NSTimer * _Nonnull timer) {
       [self streamScreenshot];
     }];
   }
@@ -93,7 +98,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     [proxy _XCT_requestScreenshotOfScreenWithID:1
                                        withRect:self.screenRect
                                             uti:nil
-                             compressionQuality:SCREENSHOT_QUALITY
+                             compressionQuality: (FBConfiguration.mjpegServerScreenshotQuality / 100.0f)
                                       withReply:^(NSData *data, NSError *error) {
       screenshotData = data;
       dispatch_semaphore_signal(sem);
@@ -114,7 +119,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
       if (nil == image) {
         return;
       }
-      jpegData = UIImageJPEGRepresentation(image, SCREENSHOT_QUALITY);
+      jpegData = UIImageJPEGRepresentation(image, (FBConfiguration.mjpegServerScreenshotQuality / 100.0f));
       if (nil == jpegData) {
         return;
       }
