@@ -18,8 +18,6 @@
 #import "FBXCTestDaemonsProxy.h"
 #import "FBConfiguration.h"
 
-static const NSTimeInterval SCREENSHOT_TIMEOUT = 0.5;
-
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 
@@ -94,7 +92,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
   __block NSData *screenshotData = nil;
   id<XCTestManager_ManagerInterface> proxy = [FBXCTestDaemonsProxy testRunnerProxy];
   dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-  [proxy _XCT_setAXTimeout:SCREENSHOT_TIMEOUT reply:^(int res) {
+  [proxy _XCT_setAXTimeout:(FBConfiguration.mjpegServerScreenshotTimeout / 1000.0) reply:^(int res) {
     [proxy _XCT_requestScreenshotOfScreenWithID:1
                                        withRect:self.screenRect
                                             uti:nil
@@ -104,7 +102,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
       dispatch_semaphore_signal(sem);
     }];
   }];
-  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC)));
+  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(FBConfiguration.mjpegServerScreenshotTimeout * NSEC_PER_MSEC)));
   if (nil == screenshotData) {
     return;
   }

@@ -65,6 +65,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSInteger)mjpegServerScreenshotQuality;
 
 /**
+ The amount of time, in milliseconds, after which an attempt to capture a screenshot
+ of the device will time out. The default value is 1000 (ms, so 1 second).
+ */
++ (NSInteger)mjpegServerScreenshotTimeout;
+
+/**
  The framerate at which the background screenshots broadcaster should broadcast
  screenshots. The default value is 10 (FPS).
  */
