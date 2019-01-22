@@ -19,6 +19,7 @@
 
 static NSUInteger const DefaultStartingPort = 8100;
 static NSUInteger const DefaultMjpegServerPort = 9100;
+static NSUInteger const DefaultMjpegServerScreenshotTimeout = 1000;
 static NSUInteger const DefaultPortRange = 100;
 
 static char const *const controllerPrefBundlePath = "/System/Library/PrivateFrameworks/TextInput.framework/TextInput";
@@ -118,6 +119,16 @@ static UIInterfaceOrientation FBScreenshotOrientation = UIInterfaceOrientationUn
 
 + (void)setMjpegScalingFactor:(NSUInteger)scalingFactor {
   FBMjpegScalingFactor = scalingFactor;
+}
+
++ (NSInteger)mjpegServerScreenshotTimeout
+{
+  if (NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_TIMEOUT"] &&
+      [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_TIMEOUT"] length] > 0) {
+    return [NSProcessInfo.processInfo.environment[@"MJPEG_SERVER_SCREENSHOT_TIMEOUT"] integerValue];
+  }
+  
+  return DefaultMjpegServerScreenshotTimeout;
 }
 
 + (BOOL)verboseLoggingEnabled

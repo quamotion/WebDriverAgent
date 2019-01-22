@@ -106,6 +106,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setMjpegScalingFactor:(NSUInteger)scalingFactor;
 
 /**
+ The amount of time, in milliseconds, after which an attempt to capture a screenshot
+ of the device will time out. The default value is 1000 (ms, so 1 second).
+ */
++ (NSInteger)mjpegServerScreenshotTimeout;
+
+/**
  YES if verbose logging is enabled. NO otherwise.
  */
 + (BOOL)verboseLoggingEnabled;
