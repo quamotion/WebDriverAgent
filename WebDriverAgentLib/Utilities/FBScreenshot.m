@@ -21,7 +21,6 @@
 #import "XCUIScreen.h"
 #import "XCUIScreenDataSource-Protocol.h"
 
-static const NSTimeInterval SCREENSHOT_TIMEOUT = .5;
 static const CGFloat HIGH_QUALITY = 0.8;
 static const CGFloat LOW_QUALITY = 0.2;
 
@@ -113,10 +112,10 @@ NSString *formatTimeInterval(NSTimeInterval interval) {
   if (nil != innerError && error) {
     *error = innerError;
   }
-  int64_t timeoutNs = (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC);
+  int64_t timeoutNs = (int64_t)(FBConfiguration.mjpegServerScreenshotTimeout * NSEC_PER_MSEC);
   if (0 != dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, timeoutNs))) {
     [[[FBErrorBuilder builder]
-      withDescription:[NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(SCREENSHOT_TIMEOUT)]]
+      withDescription:[NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(FBConfiguration.mjpegServerScreenshotTimeout)]]
      buildError:error];
   };
   return screenshotData;
@@ -151,9 +150,9 @@ NSString *formatTimeInterval(NSTimeInterval interval) {
   if (nil != error && innerError) {
     *error = innerError;
   }
-  int64_t timeoutNs = (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC);
+  int64_t timeoutNs = (int64_t)(FBConfiguration.mjpegServerScreenshotTimeout * NSEC_PER_MSEC);
   if (0 != dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, timeoutNs))) {
-    NSString *timeoutMsg = [NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(SCREENSHOT_TIMEOUT)];
+    NSString *timeoutMsg = [NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(FBConfiguration.mjpegServerScreenshotTimeout)];
     if (nil == error) {
       [FBLogger log:timeoutMsg];
     } else {
@@ -190,9 +189,9 @@ NSString *formatTimeInterval(NSTimeInterval interval) {
   if (nil != error && innerError) {
     *error = innerError;
   }
-  int64_t timeoutNs = (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC);
+  int64_t timeoutNs = (int64_t)(FBConfiguration.mjpegServerScreenshotTimeout * NSEC_PER_MSEC);
   if (0 != dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, timeoutNs))) {
-    NSString *timeoutMsg = [NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(SCREENSHOT_TIMEOUT)];
+    NSString *timeoutMsg = [NSString stringWithFormat:@"Cannot take a screenshot within %@ timeout", formatTimeInterval(FBConfiguration.mjpegServerScreenshotTimeout)];
     if (nil == error) {
       [FBLogger log:timeoutMsg];
     } else {
