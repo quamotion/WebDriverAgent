@@ -20,7 +20,6 @@
 #import "XCUIScreen.h"
 #import "FBImageIOScaler.h"
 
-static const NSTimeInterval SCREENSHOT_TIMEOUT = 0.5;
 static const NSUInteger MAX_FPS = 60;
 
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
@@ -110,7 +109,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     screenshotData = data;
     dispatch_semaphore_signal(sem);
   }];
-  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC)));
+  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(FBConfiguration.mjpegServerScreenshotTimeout * NSEC_PER_MSEC)));
   if (nil == screenshotData) {
     [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
     return;
