@@ -6,6 +6,14 @@ set -e
 rm -rf ./out
 mkdir ./out
 
+echo "Listing provisioning profiles"
+ls -l ~/Library/MobileDevice/Provisioning\ Profiles
+
+uuid=`/usr/libexec/plistbuddy -c Print:UUID /dev/stdin <<< \
+        \`security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/adhoc.mobileprovision\``
+
+echo "Using provisionig profile with UUID $uuid"
+
 xcodebuild \
     -project WebDriverAgent.xcodeproj \
     -scheme WebDriverAgentRunner \
@@ -15,7 +23,7 @@ xcodebuild \
     -allowProvisioningUpdates \
     CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" \
     CODE_SIGN_STYLE="Manual" \
-    DEVELOPMENT_TEAM="$DEVELOPMENT_TEAM"
+    PROVISIONING_PROFILE="$uuid"
 
 mkdir -p ./out/ipa/Payload
 cp -r ./out/Build/Products/Release-iphoneos/WebDriverAgentRunner-Runner.app ./out/ipa/Payload/
