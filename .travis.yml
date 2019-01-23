@@ -20,7 +20,7 @@ cache:
   - Inspector/node_modules
 
 install:
-  - wget https://download.microsoft.com/download/D/0/4/D04C5489-278D-4C11-9BD3-6128472A7626/dotnet-sdk-2.1.301-osx-x64.pkg -O ~/dotnet-sdk-2.1.301-osx-gs-x64.pkg
+  - wget https://download.microsoft.com/download/D/0/4/D04C5489-278D-4C11-9BD3-6128472A7626/dotnet-sdk-2.1.301-osx-x64.pkg -O ~/dotnet-sdk-2.1.301-osx-gs-x64.pkg -nv
   - sudo installer -pkg ~/dotnet-sdk-2.1.301-osx-gs-x64.pkg -target /
   - PATH="/usr/local/share/dotnet/:$PATH"
   - dotnet --version
