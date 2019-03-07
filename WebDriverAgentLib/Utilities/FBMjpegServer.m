@@ -21,6 +21,8 @@
 #import "XCUIScreen.h"
 #import "FBImageIOScaler.h"
 
+static const NSUInteger MAX_FPS = 60;
+
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 
