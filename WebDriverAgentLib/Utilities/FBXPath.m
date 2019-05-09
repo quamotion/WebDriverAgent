@@ -94,6 +94,10 @@
 
 #endif
 
+@interface FBClassAttribute : FBDimensionAttribute
+
+@end
+
 const static char *_UTF8Encoding = "UTF-8";
 
 static NSString *const kXMLIndexPathKey = @"private_indexPath";
@@ -505,7 +509,8 @@ static NSString *const FBAbstractMethodInvocationException = @"AbstractMethodInv
            FBXAttribute.class,
            FBYAttribute.class,
            FBWidthAttribute.class,
-           FBHeightAttribute.class];
+           FBHeightAttribute.class,
+           FBClassAttribute.class];
 }
 
 @end
@@ -742,4 +747,18 @@ static NSString *const FBAbstractMethodInvocationException = @"AbstractMethodInv
   }
   return rc;
 }
+@end
+
+@implementation FBClassAttribute
+
++ (NSString *)name
+{
+  return @"class";
+}
+
++ (NSString *)valueForElement:(id<FBElement>)element
+{
+  return element.wdClass;
+}
+
 @end
