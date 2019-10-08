@@ -1,3 +1,7 @@
+# .NET
+bin/
+obj/
+
 # OS X
 .DS_Store
 
