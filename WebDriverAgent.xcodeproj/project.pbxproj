@@ -3810,6 +3810,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.WebDriverAgentRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "$(PROVISIONING_PROFILE_RUNNER)";
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -3836,6 +3837,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.WebDriverAgentRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "$(PROVISIONING_PROFILE_RUNNER)";
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;
