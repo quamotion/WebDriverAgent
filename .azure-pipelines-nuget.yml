@@ -1,0 +1,153 @@
+variables:
+  - group: 'iosApps'
+  - name: 'sdk'
+    value: 'iphoneos'
+  - name: 'configuration'
+    value: 'Release'
+
+jobs:
+- job: Build
+
+  strategy:
+    matrix:
+      # See https://github.com/microsoft/azure-pipelines-image-generation/blob/master/images/macos/macos-10.14-Readme.md
+      # for a list of available Xcode versions
+      xcode_10_0:
+        DEVELOPER_DIR: '/Applications/Xcode_10.app'
+        image: 'macOS-10.14'
+      xcode_10_1:
+        DEVELOPER_DIR: '/Applications/Xcode_10.1.app'
+        image: 'macOS-10.14'
+      xcode_10_2:
+        DEVELOPER_DIR: '/Applications/Xcode_10.2.app'
+        image: 'macOS-10.14'
+      xcode_10_32:
+        DEVELOPER_DIR: '/Applications/Xcode_10.3.app'
+        image: 'macOS-10.15'
+
+      xcode_11_0:
+        DEVELOPER_DIR: '/Applications/Xcode_11.app'
+        image: 'macOS-10.15'
+      xcode_11_1:
+        DEVELOPER_DIR: '/Applications/Xcode_11.1.app'
+        image: 'macOS-10.15'
+      xcode_11_2:
+        DEVELOPER_DIR: '/Applications/Xcode_11.2.1.app'
+        image: 'macOS-10.15'
+      xcode_11_3:
+        DEVELOPER_DIR: '/Applications/Xcode_11.3.1.app'
+        image: 'macOS-10.15'
+      xcode_11_4:
+        DEVELOPER_DIR: '/Applications/Xcode_11.4.app'
+        image: 'macOS-10.15'
+      xcode_11_4_1:
+        DEVELOPER_DIR: '/Applications/Xcode_11.4.1.app'
+        image: 'macOS-10.15'
+      xcode_11_5:
+        DEVELOPER_DIR: '/Applications/Xcode_11.5.app'
+        image: 'macOS-10.15'
+      xcode_11_6:
+        DEVELOPER_DIR: '/Applications/Xcode_11.6_beta.app'
+        image: 'macOS-10.15'
+
+      # xcode_12_0:
+      #   DEVELOPER_DIR: '/Applications/Xcode_12_beta.app'
+      #   image: 'macOS-10.15'
+    maxParallel: 10
+
+  pool:
+    vmImage: $(image)
+
+  steps:
+  - task: InstallAppleCertificate@2
+    inputs:
+      certSecureFile: $(iosCertificateSecureFile)
+      certPwd: $(iosCertificatePassword)
+
+  - task: InstallAppleProvisioningProfile@1
+    inputs:
+      provProfileSecureFile: $(iosProvisioningProfile)
+
+  - script: |
+      version_prefix=$(jq -r ".version" package.json)
+      xcode_version=$(xcodebuild -version | head -n 1 | awk '{ print $2 }')
+      version_suffix="r$(Build.BuildId)-xcode-${xcode_version}"
+
+      echo "Building version ${version_prefix}-${version_suffix}, using Xcode version ${xcode_version}"
+
+      echo "##vso[task.setvariable variable=PackageVersion]${version_prefix}-${version_suffix}"
+      echo "##vso[task.setvariable variable=PackageVersionPrefix]${version_prefix}"
+      echo "##vso[task.setvariable variable=PackageVersionSuffix]${version_suffix}"
+      echo "##vso[task.setvariable variable=XcodeVersion]${xcode_version}"
+      echo "##vso[build.updatebuildnumber]${version_prefix}-r$(Build.BuildId)"
+    displayName: "Determine package version"
+
+  - task: ShellScript@2
+    inputs:
+      scriptPath: Scripts/bootstrap.sh
+      cwd: $(Build.SourcesDirectory)
+      disableAutoCwd: true
+    displayName: Bootstrap WebDriverAgent dependencies
+
+  - script: |
+      $(DEVELOPER_DIR)/Contents/Developer/usr/bin/xcodebuild -version
+
+      $(DEVELOPER_DIR)/Contents/Developer/usr/bin/xcodebuild \
+        -project WebDriverAgent.xcodeproj \
+        -scheme WebDriverAgentRunner \
+        -sdk $(sdk) \
+        -configuration $(configuration) \
+        -derivedDataPath $(Build.ArtifactStagingDirectory)/$(sdk)/$(configuration)/WebDriverAgent \
+        PROVISIONING_PROFILE_RUNNER=$(APPLE_PROV_PROFILE_UUID) \
+        DEVELOPMENT_TEAM=$(iosDevelopmentTeam) \
+        CODE_SIGN_IDENTITY="$(APPLE_CERTIFICATE_SIGNING_IDENTITY)" \
+        CODE_SIGN_STYLE=manual
+    displayName: 'Build WebDriverAgent'
+
+  - script: |
+      # Dump basic information about the verison of XCTest embedded in this ipa
+      /usr/libexec/PlistBuddy -c Print Payload/WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/version.plist
+      /usr/libexec/PlistBuddy -c Print Payload/WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/Info.plist
+    workingDirectory: $(Build.ArtifactStagingDirectory)/$(sdk)/$(configuration)/WebDriverAgent
+    displayName: 'Dump XCTest information'
+
+  - script: |
+      mkdir -p ./ipa/Payload
+      cp -r ./Build/Products/$(configuration)-$(sdk)/WebDriverAgentRunner-Runner.app ./ipa/Payload/
+      cd ./ipa
+      
+      mkdir -p $(Build.ArtifactStagingDirectory)/ipa
+      zip -r $(Build.ArtifactStagingDirectory)/ipa/WebDriverAgent-$(PackageVersion).ipa .
+    workingDirectory: $(Build.ArtifactStagingDirectory)/$(sdk)/$(configuration)/WebDriverAgent
+    displayName: 'Package WebDriverAgent.ipa'
+
+  - script: |
+      cp $(Build.ArtifactStagingDirectory)/ipa/WebDriverAgent-$(PackageVersion).ipa ./WebDriverAgent.zip
+      mkdir -p $(Build.ArtifactStagingDirectory)/nuget
+
+      dotnet build -c Release /p:VersionPrefix=$(PackageVersionPrefix) /p:VersionSuffix=$(PackageVersionSuffix)
+      dotnet pack -c Release /p:VersionPrefix=$(PackageVersionPrefix) /p:VersionSuffix=$(PackageVersionSuffix) -o $(Build.ArtifactStagingDirectory)/nuget
+    workingDirectory: Quamotion.WebDriverAgent
+    displayName: 'Create Quamotion.WebDriverAgent NuGet package'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/ipa'
+      artifactName: ipa
+    displayName: 'Publish raw WebDriverAgent for Xcode $(XcodeVersion)'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/nuget'
+      artifactName: nuget
+    displayName: 'Publish NuGet package for Xcode $(XcodeVersion)'
+
+  - task: NuGetAuthenticate@0
+    displayName: 'NuGet Authenticate'
+
+  - task:  DotNetCoreCLI@2
+    displayName: 'NuGet push'
+    inputs:
+      command: push
+      publishVstsFeed: 'ci'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/nuget/*.nupkg'
