@@ -476,6 +476,18 @@
 		E444DC9B249131D40060D7EB /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8F249131D40060D7EB /* HTTPResponse.h */; };
 		E444DC9C249131D40060D7EB /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC90249131D40060D7EB /* HTTPServer.m */; };
 		E444DC9D249131D40060D7EB /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC91249131D40060D7EB /* HTTPMessage.m */; };
+		E444DCAB24913C220060D7EB /* HTTPResponseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC9F24913C210060D7EB /* HTTPResponseProxy.m */; };
+		E444DCAC24913C220060D7EB /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA024913C210060D7EB /* Route.m */; };
+		E444DCAD24913C220060D7EB /* RouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCA124913C210060D7EB /* RouteResponse.h */; };
+		E444DCAE24913C220060D7EB /* HTTPResponseProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCA224913C210060D7EB /* HTTPResponseProxy.h */; };
+		E444DCAF24913C220060D7EB /* Route.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCA324913C210060D7EB /* Route.h */; };
+		E444DCB024913C220060D7EB /* RouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA424913C210060D7EB /* RouteResponse.m */; };
+		E444DCB124913C220060D7EB /* RoutingConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCA524913C210060D7EB /* RoutingConnection.h */; };
+		E444DCB224913C220060D7EB /* RoutingConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA624913C210060D7EB /* RoutingConnection.m */; };
+		E444DCB324913C220060D7EB /* RoutingHTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCA724913C210060D7EB /* RoutingHTTPServer.h */; };
+		E444DCB424913C220060D7EB /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA824913C220060D7EB /* RoutingHTTPServer.m */; };
+		E444DCB524913C220060D7EB /* RouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA924913C220060D7EB /* RouteRequest.m */; };
+		E444DCB624913C220060D7EB /* RouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCAA24913C220060D7EB /* RouteRequest.h */; };
 		EE006EAD1EB99B15006900A4 /* FBElementVisibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */; };
 		EE006EB01EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */; };
 		EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */; };
@@ -1031,6 +1043,18 @@
 		E444DC8F249131D40060D7EB /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC90249131D40060D7EB /* HTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPServer.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPServer.m; sourceTree = SOURCE_ROOT; };
 		E444DC91249131D40060D7EB /* HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPMessage.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPMessage.m; sourceTree = SOURCE_ROOT; };
+		E444DC9F24913C210060D7EB /* HTTPResponseProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPResponseProxy.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/HTTPResponseProxy.m; sourceTree = SOURCE_ROOT; };
+		E444DCA024913C210060D7EB /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/Route.m; sourceTree = SOURCE_ROOT; };
+		E444DCA124913C210060D7EB /* RouteResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteResponse.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DCA224913C210060D7EB /* HTTPResponseProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPResponseProxy.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/HTTPResponseProxy.h; sourceTree = SOURCE_ROOT; };
+		E444DCA324913C210060D7EB /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/Route.h; sourceTree = SOURCE_ROOT; };
+		E444DCA424913C210060D7EB /* RouteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteResponse.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DCA524913C210060D7EB /* RoutingConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutingConnection.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RoutingConnection.h; sourceTree = SOURCE_ROOT; };
+		E444DCA624913C210060D7EB /* RoutingConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutingConnection.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RoutingConnection.m; sourceTree = SOURCE_ROOT; };
+		E444DCA724913C210060D7EB /* RoutingHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutingHTTPServer.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RoutingHTTPServer.h; sourceTree = SOURCE_ROOT; };
+		E444DCA824913C220060D7EB /* RoutingHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutingHTTPServer.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RoutingHTTPServer.m; sourceTree = SOURCE_ROOT; };
+		E444DCA924913C220060D7EB /* RouteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteRequest.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteRequest.m; sourceTree = SOURCE_ROOT; };
+		E444DCAA24913C220060D7EB /* RouteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteRequest.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteRequest.h; sourceTree = SOURCE_ROOT; };
 		EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBElementVisibilityTests.m; sourceTree = "<group>"; };
 		EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCElementSnapshot+FBHitPoint.h"; sourceTree = "<group>"; };
 		EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCElementSnapshot+FBHitPoint.m"; sourceTree = "<group>"; };
@@ -1561,6 +1585,7 @@
 		E444DC4A24912EC40060D7EB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				E444DC9E24913C080060D7EB /* RoutingHTTPServer */,
 				E444DC52249131050060D7EB /* CocoaHTTPServer */,
 				E444DC4D24912EEC0060D7EB /* CocoaAsyncSocket */,
 			);
@@ -1641,6 +1666,25 @@
 				E444DC56249131880060D7EB /* HTTPRedirectResponse.m */,
 			);
 			name = Responses;
+			sourceTree = "<group>";
+		};
+		E444DC9E24913C080060D7EB /* RoutingHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				E444DCA224913C210060D7EB /* HTTPResponseProxy.h */,
+				E444DC9F24913C210060D7EB /* HTTPResponseProxy.m */,
+				E444DCA324913C210060D7EB /* Route.h */,
+				E444DCA024913C210060D7EB /* Route.m */,
+				E444DCAA24913C220060D7EB /* RouteRequest.h */,
+				E444DCA924913C220060D7EB /* RouteRequest.m */,
+				E444DCA124913C210060D7EB /* RouteResponse.h */,
+				E444DCA424913C210060D7EB /* RouteResponse.m */,
+				E444DCA524913C210060D7EB /* RoutingConnection.h */,
+				E444DCA624913C210060D7EB /* RoutingConnection.m */,
+				E444DCA724913C210060D7EB /* RoutingHTTPServer.h */,
+				E444DCA824913C220060D7EB /* RoutingHTTPServer.m */,
+			);
+			name = RoutingHTTPServer;
 			sourceTree = "<group>";
 		};
 		EE9AB73E1CAEDF0C008C271F /* Categories */ = {
@@ -2385,6 +2429,7 @@
 				EE35AD621E3B77D600A02D78 /* XCTTestRunSession.h in Headers */,
 				EE35AD541E3B77D600A02D78 /* XCTestProbe.h in Headers */,
 				EE35AD281E3B77D600A02D78 /* XCApplicationQuery.h in Headers */,
+				E444DCB124913C220060D7EB /* RoutingConnection.h in Headers */,
 				EE35AD3C1E3B77D600A02D78 /* XCTAsyncActivity.h in Headers */,
 				EE35AD501E3B77D600A02D78 /* XCTestMisuseObserver.h in Headers */,
 				EE35AD601E3B77D600A02D78 /* XCTRunnerDaemonSession.h in Headers */,
@@ -2446,6 +2491,7 @@
 				EE35AD521E3B77D600A02D78 /* XCTestObservationCenter.h in Headers */,
 				EE35AD5B1E3B77D600A02D78 /* XCTNSNotificationExpectation.h in Headers */,
 				E444DC97249131D40060D7EB /* HTTPServer.h in Headers */,
+				E444DCAE24913C220060D7EB /* HTTPResponseProxy.h in Headers */,
 				EE35AD751E3B77D600A02D78 /* XCUIRecorderNodeFinder.h in Headers */,
 				1357E296233D05240054BDB8 /* XCUIHitPointResult.h in Headers */,
 				EE158AAE1CBD456F00A3E3F0 /* XCUIElement+FBAccessibility.h in Headers */,
@@ -2473,6 +2519,7 @@
 				E444DC93249131D40060D7EB /* HTTPMessage.h in Headers */,
 				EE35AD3A1E3B77D600A02D78 /* XCSynthesizedEventRecord.h in Headers */,
 				EE158AF91CBD456F00A3E3F0 /* FBApplicationProcessProxy.h in Headers */,
+				E444DCAD24913C220060D7EB /* RouteResponse.h in Headers */,
 				EE35AD671E3B77D600A02D78 /* XCTWaiterDelegatePrivate-Protocol.h in Headers */,
 				EE35AD4D1E3B77D600A02D78 /* XCTestManager_IDEInterface-Protocol.h in Headers */,
 				711084441DA3AA7500F913D6 /* FBXPath.h in Headers */,
@@ -2482,6 +2529,7 @@
 				EE8DDD7F20C5733C004D4925 /* XCUIElement+FBForceTouch.h in Headers */,
 				EE158AEA1CBD456F00A3E3F0 /* FBRuntimeUtils.h in Headers */,
 				7136A4791E8918E60024FC3D /* XCUIElement+FBPickerWheel.h in Headers */,
+				E444DCB324913C220060D7EB /* RoutingHTTPServer.h in Headers */,
 				EE35AD511E3B77D600A02D78 /* XCTestObservation-Protocol.h in Headers */,
 				EE35AD131E3B77D600A02D78 /* _XCTNSPredicateExpectationImplementation.h in Headers */,
 				EE158ABE1CBD456F00A3E3F0 /* FBElementCommands.h in Headers */,
@@ -2549,6 +2597,7 @@
 				EE35AD581E3B77D600A02D78 /* XCTestWaiter.h in Headers */,
 				7150348721A6DAD600A0F4BA /* FBImageUtils.h in Headers */,
 				C8FB547422D3949C00B69954 /* LSApplicationWorkspace.h in Headers */,
+				E444DCAF24913C220060D7EB /* Route.h in Headers */,
 				EE35AD1D1E3B77D600A02D78 /* NSValue-XCTestAdditions.h in Headers */,
 				EE35AD141E3B77D600A02D78 /* _XCTWaiterImpl.h in Headers */,
 				EE9B76A81CF7A43900275851 /* FBLogger.h in Headers */,
@@ -2567,6 +2616,7 @@
 				EE35AD151E3B77D600A02D78 /* CDStructures.h in Headers */,
 				E444DC96249131D40060D7EB /* WebSocket.h in Headers */,
 				EE35AD311E3B77D600A02D78 /* XCKeyboardLayout.h in Headers */,
+				E444DCB624913C220060D7EB /* RouteRequest.h in Headers */,
 				EE35AD3B1E3B77D600A02D78 /* XCTAsyncActivity-Protocol.h in Headers */,
 				EE35AD251E3B77D600A02D78 /* XCActivityRecord.h in Headers */,
 				EEBBD48B1D47746D00656A81 /* XCUIElement+FBFind.h in Headers */,
@@ -3044,6 +3094,7 @@
 				71555A3E1DEC460A007D4A8B /* NSExpression+FBFormat.m in Sources */,
 				AD6C269D1CF2494200F8B5FF /* XCUIApplication+FBHelpers.m in Sources */,
 				EE3A18671CDE734B00DE4205 /* FBKeyboard.m in Sources */,
+				E444DCAC24913C220060D7EB /* Route.m in Sources */,
 				713C6DD01DDC772A00285B92 /* FBElementUtils.m in Sources */,
 				7140974C1FAE1B51008FB2C5 /* FBW3CActionsSynthesizer.m in Sources */,
 				EE158AFA1CBD456F00A3E3F0 /* FBApplicationProcessProxy.m in Sources */,
@@ -3054,6 +3105,7 @@
 				EE158AB11CBD456F00A3E3F0 /* XCUIElement+FBIsVisible.m in Sources */,
 				EEBBD48C1D47746D00656A81 /* XCUIElement+FBFind.m in Sources */,
 				EE158ADD1CBD456F00A3E3F0 /* FBResponsePayload.m in Sources */,
+				E444DCB524913C220060D7EB /* RouteRequest.m in Sources */,
 				C8FB547A22D4C1FC00B69954 /* FBUnattachedAppLauncher.m in Sources */,
 				EE158ADF1CBD456F00A3E3F0 /* FBRoute.m in Sources */,
 				EE0D1F621EBCDCF7006A3123 /* NSString+FBVisualLength.m in Sources */,
@@ -3074,6 +3126,7 @@
 				EE7E271F1D06C69F001BEC7B /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
 				7155D704211DCEF400166C20 /* FBMjpegServer.m in Sources */,
 				EEDFE1221D9C06F800E6FFE5 /* XCUIDevice+FBHealthCheck.m in Sources */,
+				E444DCB424913C220060D7EB /* RoutingHTTPServer.m in Sources */,
 				EE158AF81CBD456F00A3E3F0 /* FBSpringboardApplication.m in Sources */,
 				7140974E1FAE20EE008FB2C5 /* FBBaseActionsSynthesizer.m in Sources */,
 				EEE3764A1D59FAE900ED88DD /* XCUIElement+FBWebDriverAttributes.m in Sources */,
@@ -3097,10 +3150,12 @@
 				E444DC64249131890060D7EB /* HTTPDynamicFileResponse.m in Sources */,
 				EE158AAF1CBD456F00A3E3F0 /* XCUIElement+FBAccessibility.m in Sources */,
 				7150348821A6DAD600A0F4BA /* FBImageUtils.m in Sources */,
+				E444DCAB24913C220060D7EB /* HTTPResponseProxy.m in Sources */,
 				E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */,
 				E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */,
 				E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */,
 				EE158AE51CBD456F00A3E3F0 /* FBSession.m in Sources */,
+				E444DCB224913C220060D7EB /* RoutingConnection.m in Sources */,
 				E444DC772491319B0060D7EB /* MultipartFormDataParser.m in Sources */,
 				EE158AC11CBD456F00A3E3F0 /* FBFindElementCommands.m in Sources */,
 				EE7E271D1D06C69F001BEC7B /* FBDebugLogDelegateDecorator.m in Sources */,
@@ -3122,6 +3177,7 @@
 				EEE376421D59F81400ED88DD /* XCElementSnapshot+FBHelpers.m in Sources */,
 				EE158AE91CBD456F00A3E3F0 /* FBElementTypeTransformer.m in Sources */,
 				E444DC9D249131D40060D7EB /* HTTPMessage.m in Sources */,
+				E444DCB024913C220060D7EB /* RouteResponse.m in Sources */,
 				EE158AF61CBD456F00A3E3F0 /* FBApplication.m in Sources */,
 				715AFAC21FFA29180053896D /* FBScreen.m in Sources */,
 				71B155DC230711E900646AFB /* FBCommandStatus.m in Sources */,
