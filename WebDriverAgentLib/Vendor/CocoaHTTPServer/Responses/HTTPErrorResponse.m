@@ -1,7 +1,5 @@
 #import "HTTPErrorResponse.h"
 
-#pragma clang diagnostic ignored "-Wunknown-warning-option"
-#pragma clang diagnostic ignored "-Wextra-semi-stmt"
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
 
 @implementation HTTPErrorResponse

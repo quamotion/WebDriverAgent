@@ -7,12 +7,10 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
-#pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
 #pragma clang diagnostic ignored "-Wimplicit-retain-self"
 #pragma clang diagnostic ignored "-Wnullable-to-nonnull-conversion"
 #pragma clang diagnostic ignored "-Wunused"
-#pragma clang diagnostic ignored "-Wextra-semi-stmt"
 
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
