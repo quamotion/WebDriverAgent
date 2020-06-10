@@ -8,6 +8,16 @@
 //  https://github.com/robbiehanson/CocoaAsyncSocket
 //
 
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+#pragma clang diagnostic ignored "-Wfloat-conversion"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
+#pragma clang diagnostic ignored "-Wvla"
+#pragma clang diagnostic ignored "-Wswitch-enum"
+#pragma clang diagnostic ignored "-Wextra-semi-stmt"
+
 #import "GCDAsyncSocket.h"
 
 #if TARGET_OS_IPHONE
