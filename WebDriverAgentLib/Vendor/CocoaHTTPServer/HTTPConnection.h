@@ -46,9 +46,6 @@
 	
 	BOOL sentResponseHeaders;
 	
-	NSString *nonce;
-	long lastNC;
-	
 	NSObject<HTTPResponse> *httpResponse;
 	
 	NSMutableArray *ranges;
@@ -77,11 +74,6 @@
 - (BOOL)isSecureServer;
 - (NSArray *)sslIdentityAndCertificates;
 
-- (BOOL)isPasswordProtected:(NSString *)path;
-- (BOOL)useDigestAccessAuthentication;
-- (NSString *)realm;
-- (NSString *)passwordForUser:(NSString *)username;
-
 - (NSDictionary *)parseParams:(NSString *)query;
 - (NSDictionary *)parseGetParams;
 
@@ -98,7 +90,6 @@
 - (void)finishBody;
 
 - (void)handleVersionNotSupported:(NSString *)version;
-- (void)handleAuthenticationFailed;
 - (void)handleResourceNotFound;
 - (void)handleInvalidRequest:(NSData *)data;
 - (void)handleUnknownMethod:(NSString *)method;

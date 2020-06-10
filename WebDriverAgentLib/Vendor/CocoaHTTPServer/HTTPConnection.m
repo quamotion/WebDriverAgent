@@ -3,10 +3,8 @@
 #import "HTTPConnection.h"
 #import "HTTPMessage.h"
 #import "HTTPResponse.h"
-#import "HTTPAuthenticationRequest.h"
 #import "DDNumber.h"
 #import "DDRange.h"
-#import "DDData.h"
 #import "HTTPFileResponse.h"
 #import "HTTPAsyncFileResponse.h"
 #import "HTTPLogging.h"
@@ -102,77 +100,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 @implementation HTTPConnection
 
-static dispatch_queue_t recentNonceQueue;
-static NSMutableArray *recentNonces;
-
-/**
- * This method is automatically called (courtesy of Cocoa) before the first instantiation of this class.
- * We use it to initialize any static variables.
-**/
-+ (void)initialize
-{
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		
-		// Initialize class variables
-		recentNonceQueue = dispatch_queue_create("HTTPConnection-Nonce", NULL);
-		recentNonces = [[NSMutableArray alloc] initWithCapacity:5];
-	});
-}
-
-/**
- * Generates and returns an authentication nonce.
- * A nonce is a  server-specified string uniquely generated for each 401 response.
- * The default implementation uses a single nonce for each session.
-**/
-+ (NSString *)generateNonce
-{
-	// We use the Core Foundation UUID class to generate a nonce value for us
-	// UUIDs (Universally Unique Identifiers) are 128-bit values guaranteed to be unique.
-	CFUUIDRef theUUID = CFUUIDCreate(NULL);
-	NSString *newNonce = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, theUUID);
-	CFRelease(theUUID);
-	
-	// We have to remember that the HTTP protocol is stateless.
-	// Even though with version 1.1 persistent connections are the norm, they are not guaranteed.
-	// Thus if we generate a nonce for this connection,
-	// it should be honored for other connections in the near future.
-	// 
-	// In fact, this is absolutely necessary in order to support QuickTime.
-	// When QuickTime makes it's initial connection, it will be unauthorized, and will receive a nonce.
-	// It then disconnects, and creates a new connection with the nonce, and proper authentication.
-	// If we don't honor the nonce for the second connection, QuickTime will repeat the process and never connect.
-	
-	dispatch_async(recentNonceQueue, ^{ @autoreleasepool {
-		
-		[recentNonces addObject:newNonce];
-	}});
-	
-	double delayInSeconds = TIMEOUT_NONCE;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-	dispatch_after(popTime, recentNonceQueue, ^{ @autoreleasepool {
-		
-		[recentNonces removeObject:newNonce];
-	}});
-	
-	return newNonce;
-}
-
-/**
- * Returns whether or not the given nonce is in the list of recently generated nonce's.
-**/
-+ (BOOL)hasRecentNonce:(NSString *)recentNonce
-{
-	__block BOOL result = NO;
-	
-	dispatch_sync(recentNonceQueue, ^{ @autoreleasepool {
-		
-		result = [recentNonces containsObject:recentNonce];
-	}});
-	
-	return result;
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Init, Dealloc:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -206,11 +133,6 @@ static NSMutableArray *recentNonces;
 		
 		// Store configuration
 		config = aConfig;
-		
-		// Initialize lastNC (last nonce count).
-		// Used with digest access authentication.
-		// These must increment for each request from the client.
-		lastNC = 0;
 		
 		// Create a new HTTP message
 		request = [[HTTPMessage alloc] initEmptyRequest];
@@ -336,233 +258,6 @@ static NSMutableArray *recentNonces;
 	// Override me to provide the proper required SSL identity.
 	
 	return nil;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Password Protection
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Returns whether or not the requested resource is password protected.
- * In this generic implementation, nothing is password protected.
-**/
-- (BOOL)isPasswordProtected:(NSString *)path
-{
-	HTTPLogTrace();
-	
-	// Override me to provide password protection...
-	// You can configure it for the entire server, or based on the current request
-	
-	return NO;
-}
-
-/**
- * Returns whether or not the authentication challenge should use digest access authentication.
- * The alternative is basic authentication.
- * 
- * If at all possible, digest access authentication should be used because it's more secure.
- * Basic authentication sends passwords in the clear and should be avoided unless using SSL/TLS.
-**/
-- (BOOL)useDigestAccessAuthentication
-{
-	HTTPLogTrace();
-	
-	// Override me to customize the authentication scheme
-	// Make sure you understand the security risks of using the weaker basic authentication
-	
-	return YES;
-}
-
-/**
- * Returns the authentication realm.
- * In this generic implmentation, a default realm is used for the entire server.
-**/
-- (NSString *)realm
-{
-	HTTPLogTrace();
-	
-	// Override me to provide a custom realm...
-	// You can configure it for the entire server, or based on the current request
-	
-	return @"defaultRealm@host.com";
-}
-
-/**
- * Returns the password for the given username.
-**/
-- (NSString *)passwordForUser:(NSString *)username
-{
-	HTTPLogTrace();
-	
-	// Override me to provide proper password authentication
-	// You can configure a password for the entire server, or custom passwords for users and/or resources
-	
-	// Security Note:
-	// A nil password means no access at all. (Such as for user doesn't exist)
-	// An empty string password is allowed, and will be treated as any other password. (To support anonymous access)
-	
-	return nil;
-}
-
-/**
- * Returns whether or not the user is properly authenticated.
-**/
-- (BOOL)isAuthenticated
-{
-	HTTPLogTrace();
-	
-	// Extract the authentication information from the Authorization header
-	HTTPAuthenticationRequest *auth = [[HTTPAuthenticationRequest alloc] initWithRequest:request];
-	
-	if ([self useDigestAccessAuthentication])
-	{
-		// Digest Access Authentication (RFC 2617)
-		
-		if(![auth isDigest])
-		{
-			// User didn't send proper digest access authentication credentials
-			return NO;
-		}
-		
-		if ([auth username] == nil)
-		{
-			// The client didn't provide a username
-			// Most likely they didn't provide any authentication at all
-			return NO;
-		}
-		
-		NSString *password = [self passwordForUser:[auth username]];
-		if (password == nil)
-		{
-			// No access allowed (username doesn't exist in system)
-			return NO;
-		}
-		
-		NSString *url = [[request url] relativeString];
-		
-		if (![url isEqualToString:[auth uri]])
-		{
-			// Requested URL and Authorization URI do not match
-			// This could be a replay attack
-			// IE - attacker provides same authentication information, but requests a different resource
-			return NO;
-		}
-		
-		// The nonce the client provided will most commonly be stored in our local (cached) nonce variable
-		if (![nonce isEqualToString:[auth nonce]])
-		{
-			// The given nonce may be from another connection
-			// We need to search our list of recent nonce strings that have been recently distributed
-			if ([[self class] hasRecentNonce:[auth nonce]])
-			{
-				// Store nonce in local (cached) nonce variable to prevent array searches in the future
-				nonce = [[auth nonce] copy];
-				
-				// The client has switched to using a different nonce value
-				// This may happen if the client tries to get a file in a directory with different credentials.
-				// The previous credentials wouldn't work, and the client would receive a 401 error
-				// along with a new nonce value. The client then uses this new nonce value and requests the file again.
-				// Whatever the case may be, we need to reset lastNC, since that variable is on a per nonce basis.
-				lastNC = 0;
-			}
-			else
-			{
-				// We have no knowledge of ever distributing such a nonce.
-				// This could be a replay attack from a previous connection in the past.
-				return NO;
-			}
-		}
-		
-		long authNC = strtol([[auth nc] UTF8String], NULL, 16);
-		
-		if (authNC <= lastNC)
-		{
-			// The nc value (nonce count) hasn't been incremented since the last request.
-			// This could be a replay attack.
-			return NO;
-		}
-		lastNC = authNC;
-		
-		NSString *HA1str = [NSString stringWithFormat:@"%@:%@:%@", [auth username], [auth realm], password];
-		NSString *HA2str = [NSString stringWithFormat:@"%@:%@", [request method], [auth uri]];
-		
-		NSString *HA1 = [[[HA1str dataUsingEncoding:NSUTF8StringEncoding] md5Digest] hexStringValue];
-		
-		NSString *HA2 = [[[HA2str dataUsingEncoding:NSUTF8StringEncoding] md5Digest] hexStringValue];
-		
-		NSString *responseStr = [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@",
-								 HA1, [auth nonce], [auth nc], [auth cnonce], [auth qop], HA2];
-		
-		NSString *response = [[[responseStr dataUsingEncoding:NSUTF8StringEncoding] md5Digest] hexStringValue];
-		
-		return [response isEqualToString:[auth response]];
-	}
-	else
-	{
-		// Basic Authentication
-		
-		if (![auth isBasic])
-		{
-			// User didn't send proper base authentication credentials
-			return NO;
-		}
-		
-		// Decode the base 64 encoded credentials
-		NSString *base64Credentials = [auth base64Credentials];
-		
-		NSData *temp = [[base64Credentials dataUsingEncoding:NSUTF8StringEncoding] base64Decoded];
-		
-		NSString *credentials = [[NSString alloc] initWithData:temp encoding:NSUTF8StringEncoding];
-		
-		// The credentials should be of the form "username:password"
-		// The username is not allowed to contain a colon
-		
-		NSRange colonRange = [credentials rangeOfString:@":"];
-		
-		if (colonRange.length == 0)
-		{
-			// Malformed credentials
-			return NO;
-		}
-		
-		NSString *credUsername = [credentials substringToIndex:colonRange.location];
-		NSString *credPassword = [credentials substringFromIndex:(colonRange.location + colonRange.length)];
-		
-		NSString *password = [self passwordForUser:credUsername];
-		if (password == nil)
-		{
-			// No access allowed (username doesn't exist in system)
-			return NO;
-		}
-		
-		return [password isEqualToString:credPassword];
-	}
-}
-
-/**
- * Adds a digest access authentication challenge to the given response.
-**/
-- (void)addDigestAuthChallenge:(HTTPMessage *)response
-{
-	HTTPLogTrace();
-	
-	NSString *authFormat = @"Digest realm=\"%@\", qop=\"auth\", nonce=\"%@\"";
-	NSString *authInfo = [NSString stringWithFormat:authFormat, [self realm], [[self class] generateNonce]];
-	
-	[response setHeaderField:@"WWW-Authenticate" value:authInfo];
-}
-
-/**
- * Adds a basic authentication challenge to the given response.
-**/
-- (void)addBasicAuthChallenge:(HTTPMessage *)response
-{
-	HTTPLogTrace();
-	
-	NSString *authFormat = @"Basic realm=\"%@\"";
-	NSString *authInfo = [NSString stringWithFormat:authFormat, [self realm]];
-	
-	[response setHeaderField:@"WWW-Authenticate" value:authInfo];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -922,14 +617,6 @@ static NSMutableArray *recentNonces;
 	
 	// Extract requested URI
 	NSString *uri = [self requestURI];
-	
-	// Check Authentication (if needed)
-	// If not properly authenticated for resource, issue Unauthorized response
-	if ([self isPasswordProtected:uri] && ![self isAuthenticated])
-	{
-		[self handleAuthenticationFailed];
-		return;
-	}
 	
 	// Extract the method
 	NSString *method = [request method];
@@ -1708,35 +1395,6 @@ static NSMutableArray *recentNonces;
 	HTTPMessage *response = [[HTTPMessage alloc] initResponseWithStatusCode:505 description:nil version:HTTPVersion1_1];
 	[response setHeaderField:@"Content-Length" value:@"0"];
     
-	NSData *responseData = [self preprocessErrorResponse:response];
-	[asyncSocket writeData:responseData withTimeout:TIMEOUT_WRITE_ERROR tag:HTTP_RESPONSE];
-	
-}
-
-/**
- * Called if the authentication information was required and absent, or if authentication failed.
-**/
-- (void)handleAuthenticationFailed
-{
-	// Override me for custom handling of authentication challenges
-	// If you simply want to add a few extra header fields, see the preprocessErrorResponse: method.
-	// You can also use preprocessErrorResponse: to add an optional HTML body.
-	
-	HTTPLogInfo(@"HTTP Server: Error 401 - Unauthorized (%@)", [self requestURI]);
-		
-	// Status Code 401 - Unauthorized
-	HTTPMessage *response = [[HTTPMessage alloc] initResponseWithStatusCode:401 description:nil version:HTTPVersion1_1];
-	[response setHeaderField:@"Content-Length" value:@"0"];
-	
-	if ([self useDigestAccessAuthentication])
-	{
-		[self addDigestAuthChallenge:response];
-	}
-	else
-	{
-		[self addBasicAuthChallenge:response];
-	}
-	
 	NSData *responseData = [self preprocessErrorResponse:response];
 	[asyncSocket writeData:responseData withTimeout:TIMEOUT_WRITE_ERROR tag:HTTP_RESPONSE];
 	
