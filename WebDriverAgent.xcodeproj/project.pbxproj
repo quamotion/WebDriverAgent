@@ -438,12 +438,6 @@
 		E444DC67249131890060D7EB /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5B249131880060D7EB /* HTTPDataResponse.m */; };
 		E444DC6C249131890060D7EB /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC60249131890060D7EB /* HTTPDataResponse.h */; };
 		E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC61249131890060D7EB /* HTTPErrorResponse.m */; };
-		E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */; };
-		E444DC752491319B0060D7EB /* MultipartMessageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */; };
-		E444DC762491319B0060D7EB /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC702491319A0060D7EB /* MultipartMessageHeader.m */; };
-		E444DC772491319B0060D7EB /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC712491319A0060D7EB /* MultipartFormDataParser.m */; };
-		E444DC782491319B0060D7EB /* MultipartFormDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC722491319A0060D7EB /* MultipartFormDataParser.h */; };
-		E444DC792491319B0060D7EB /* MultipartMessageHeaderField.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */; };
 		E444DC81249131B10060D7EB /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7B249131B00060D7EB /* DDRange.h */; };
 		E444DC83249131B10060D7EB /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7D249131B00060D7EB /* DDNumber.h */; };
 		E444DC84249131B10060D7EB /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7E249131B00060D7EB /* DDRange.m */; };
@@ -989,12 +983,6 @@
 		E444DC5B249131880060D7EB /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC60249131890060D7EB /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC61249131890060D7EB /* HTTPErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPErrorResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.m; sourceTree = SOURCE_ROOT; };
-		E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeaderField.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeaderField.m; sourceTree = SOURCE_ROOT; };
-		E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeader.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeader.h; sourceTree = SOURCE_ROOT; };
-		E444DC702491319A0060D7EB /* MultipartMessageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeader.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeader.m; sourceTree = SOURCE_ROOT; };
-		E444DC712491319A0060D7EB /* MultipartFormDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartFormDataParser.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartFormDataParser.m; sourceTree = SOURCE_ROOT; };
-		E444DC722491319A0060D7EB /* MultipartFormDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartFormDataParser.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartFormDataParser.h; sourceTree = SOURCE_ROOT; };
-		E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeaderField.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeaderField.h; sourceTree = SOURCE_ROOT; };
 		E444DC7B249131B00060D7EB /* DDRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDRange.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDRange.h; sourceTree = SOURCE_ROOT; };
 		E444DC7D249131B00060D7EB /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDNumber.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDNumber.h; sourceTree = SOURCE_ROOT; };
 		E444DC7E249131B00060D7EB /* DDRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDRange.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDRange.m; sourceTree = SOURCE_ROOT; };
@@ -1577,7 +1565,6 @@
 				E444DC8B249131D30060D7EB /* HTTPServer.h */,
 				E444DC90249131D40060D7EB /* HTTPServer.m */,
 				E444DC55249131740060D7EB /* Responses */,
-				E444DC54249131690060D7EB /* Mime */,
 				E444DC53249131640060D7EB /* Categories */,
 			);
 			name = CocoaHTTPServer;
@@ -1594,19 +1581,6 @@
 				E444DC7E249131B00060D7EB /* DDRange.m */,
 			);
 			name = Categories;
-			sourceTree = "<group>";
-		};
-		E444DC54249131690060D7EB /* Mime */ = {
-			isa = PBXGroup;
-			children = (
-				E444DC722491319A0060D7EB /* MultipartFormDataParser.h */,
-				E444DC712491319A0060D7EB /* MultipartFormDataParser.m */,
-				E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */,
-				E444DC702491319A0060D7EB /* MultipartMessageHeader.m */,
-				E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */,
-				E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */,
-			);
-			name = Mime;
 			sourceTree = "<group>";
 		};
 		E444DC55249131740060D7EB /* Responses */ = {
@@ -2430,9 +2404,7 @@
 				71B155DA23070ECF00646AFB /* FBHTTPStatusCodes.h in Headers */,
 				EE35AD221E3B77D600A02D78 /* UISwipeGestureRecognizer-RecordingAdditions.h in Headers */,
 				713C6DCF1DDC772A00285B92 /* FBElementUtils.h in Headers */,
-				E444DC792491319B0060D7EB /* MultipartMessageHeaderField.h in Headers */,
 				EE158ABC1CBD456F00A3E3F0 /* FBDebugCommands.h in Headers */,
-				E444DC752491319B0060D7EB /* MultipartMessageHeader.h in Headers */,
 				EE35AD561E3B77D600A02D78 /* XCTestSuite.h in Headers */,
 				EE35AD6D1E3B77D600A02D78 /* XCUICoordinate.h in Headers */,
 				EE35AD5C1E3B77D600A02D78 /* XCTNSPredicateExpectation.h in Headers */,
@@ -2482,7 +2454,6 @@
 				EE35AD131E3B77D600A02D78 /* _XCTNSPredicateExpectationImplementation.h in Headers */,
 				EE158ABE1CBD456F00A3E3F0 /* FBElementCommands.h in Headers */,
 				EE158AF71CBD456F00A3E3F0 /* FBSpringboardApplication.h in Headers */,
-				E444DC782491319B0060D7EB /* MultipartFormDataParser.h in Headers */,
 				715557D3211DBCE700613B26 /* FBTCPSocket.h in Headers */,
 				71B49EC71ED1A58100D51AD6 /* XCUIElement+FBUID.h in Headers */,
 				EE35AD381E3B77D600A02D78 /* XCSymbolicationRecord.h in Headers */,
@@ -3025,7 +2996,6 @@
 				EEEC7C931F21F27A0053426C /* FBPredicate.m in Sources */,
 				7136A47A1E8918E60024FC3D /* XCUIElement+FBPickerWheel.m in Sources */,
 				E444DC84249131B10060D7EB /* DDRange.m in Sources */,
-				E444DC762491319B0060D7EB /* MultipartMessageHeader.m in Sources */,
 				6385F4A7220A40760095BBDB /* XCUIApplicationProcessDelay.m in Sources */,
 				711084451DA3AA7500F913D6 /* FBXPath.m in Sources */,
 				719CD8FD2126C88B00C7D0C2 /* XCUIApplication+FBAlert.m in Sources */,
@@ -3057,7 +3027,6 @@
 				EEE9B4731CD02B88009D2030 /* FBRunLoopSpinner.m in Sources */,
 				719CD8F92126C78F00C7D0C2 /* FBAlertsMonitor.m in Sources */,
 				71A7EAFA1E224648001DA4F2 /* FBClassChainQueryParser.m in Sources */,
-				E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */,
 				71A224E61DE2F56600844D55 /* NSPredicate+FBFormat.m in Sources */,
 				E444DC85249131B10060D7EB /* DDNumber.m in Sources */,
 				710C16CE21497A08006EA1D0 /* XCAccessibilityElement+FBComparison.m in Sources */,
@@ -3098,7 +3067,6 @@
 				E444DCB9249172D60060D7EB /* DDData.m in Sources */,
 				EE158AE51CBD456F00A3E3F0 /* FBSession.m in Sources */,
 				E444DCB224913C220060D7EB /* RoutingConnection.m in Sources */,
-				E444DC772491319B0060D7EB /* MultipartFormDataParser.m in Sources */,
 				EE158AC11CBD456F00A3E3F0 /* FBFindElementCommands.m in Sources */,
 				EE7E271D1D06C69F001BEC7B /* FBDebugLogDelegateDecorator.m in Sources */,
 				EE158AB91CBD456F00A3E3F0 /* FBAlertViewCommands.m in Sources */,
