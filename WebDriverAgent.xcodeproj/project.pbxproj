@@ -434,8 +434,6 @@
 		C8FB547A22D4C1FC00B69954 /* FBUnattachedAppLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FB547822D4C1FC00B69954 /* FBUnattachedAppLauncher.m */; };
 		E444DC5024912F050060D7EB /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC4E24912F050060D7EB /* GCDAsyncSocket.h */; };
 		E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */; };
-		E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC56249131880060D7EB /* HTTPRedirectResponse.m */; };
-		E444DC63249131890060D7EB /* HTTPRedirectResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC57249131880060D7EB /* HTTPRedirectResponse.h */; };
 		E444DC65249131890060D7EB /* HTTPErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC59249131880060D7EB /* HTTPErrorResponse.h */; };
 		E444DC67249131890060D7EB /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5B249131880060D7EB /* HTTPDataResponse.m */; };
 		E444DC6C249131890060D7EB /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC60249131890060D7EB /* HTTPDataResponse.h */; };
@@ -987,8 +985,6 @@
 		C8FB547822D4C1FC00B69954 /* FBUnattachedAppLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBUnattachedAppLauncher.m; sourceTree = "<group>"; };
 		E444DC4E24912F050060D7EB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = WebDriverAgentLib/Vendor/CocoaAsyncSocket/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
 		E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = WebDriverAgentLib/Vendor/CocoaAsyncSocket/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
-		E444DC56249131880060D7EB /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPRedirectResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.m; sourceTree = SOURCE_ROOT; };
-		E444DC57249131880060D7EB /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPRedirectResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC59249131880060D7EB /* HTTPErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPErrorResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC5B249131880060D7EB /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC60249131890060D7EB /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.h; sourceTree = SOURCE_ROOT; };
@@ -1620,8 +1616,6 @@
 				E444DC5B249131880060D7EB /* HTTPDataResponse.m */,
 				E444DC59249131880060D7EB /* HTTPErrorResponse.h */,
 				E444DC61249131890060D7EB /* HTTPErrorResponse.m */,
-				E444DC57249131880060D7EB /* HTTPRedirectResponse.h */,
-				E444DC56249131880060D7EB /* HTTPRedirectResponse.m */,
 			);
 			name = Responses;
 			sourceTree = "<group>";
@@ -2397,7 +2391,6 @@
 				71B155DF23080CA600646AFB /* FBProtocolHelpers.h in Headers */,
 				EE35AD4B1E3B77D600A02D78 /* XCTestExpectationWaiter.h in Headers */,
 				EE35AD1E1E3B77D600A02D78 /* UIGestureRecognizer-RecordingAdditions.h in Headers */,
-				E444DC63249131890060D7EB /* HTTPRedirectResponse.h in Headers */,
 				6496A5D9230D6EB30087F8CB /* AXSettings.h in Headers */,
 				EE35AD301E3B77D600A02D78 /* XCKeyboardKeyMap.h in Headers */,
 				EE35AD5D1E3B77D600A02D78 /* XCTNSPredicateExpectationObject-Protocol.h in Headers */,
@@ -3102,7 +3095,6 @@
 				E444DCAB24913C220060D7EB /* HTTPResponseProxy.m in Sources */,
 				E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */,
 				E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */,
-				E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */,
 				E444DCB9249172D60060D7EB /* DDData.m in Sources */,
 				EE158AE51CBD456F00A3E3F0 /* FBSession.m in Sources */,
 				E444DCB224913C220060D7EB /* RoutingConnection.m in Sources */,
