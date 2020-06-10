@@ -302,8 +302,6 @@
 		641EE70C2240CE2D00173FCB /* FBTVNavigationTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 641EE70A2240CE2D00173FCB /* FBTVNavigationTracker.h */; };
 		641EE70E2240CE4800173FCB /* FBTVNavigationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 641EE70D2240CE4800173FCB /* FBTVNavigationTracker.m */; };
 		641EE70F2240CE4800173FCB /* FBTVNavigationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 641EE70D2240CE4800173FCB /* FBTVNavigationTracker.m */; };
-		641EE7172240DE8C00173FCB /* RoutingHTTPServer.framework in Copy frameworks */ = {isa = PBXBuildFile; fileRef = 641EE7122240DE5E00173FCB /* RoutingHTTPServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		641EE7192240DFC100173FCB /* RoutingHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641EE7122240DE5E00173FCB /* RoutingHTTPServer.framework */; };
 		644D9CCE230E1F1A00C90459 /* FBConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D9CCD230E1F1A00C90459 /* FBConfigurationTests.m */; };
 		648C10AB22AAAD9C00B81B9A /* UIKeyboardImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 648C10AA22AAAD9C00B81B9A /* UIKeyboardImpl.h */; };
 		648C10AC22AAAD9C00B81B9A /* UIKeyboardImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 648C10AA22AAAD9C00B81B9A /* UIKeyboardImpl.h */; };
@@ -358,7 +356,6 @@
 		7155B41B224D5B5A0042A993 /* libAccessibility.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155B41A224D5B480042A993 /* libAccessibility.tbd */; };
 		7155B41C224D5B5D0042A993 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155B419224D5B460042A993 /* libxml2.tbd */; };
 		7155B41D224D5B6C0042A993 /* YYCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641EE73A2240F49D00173FCB /* YYCache.framework */; };
-		7155B41E224D5B750042A993 /* RoutingHTTPServer.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 641EE7122240DE5E00173FCB /* RoutingHTTPServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7155B41F224D5B770042A993 /* YYCache.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 641EE73A2240F49D00173FCB /* YYCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7155B424224D5BA10042A993 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155B423224D5B980042A993 /* XCTest.framework */; };
 		7155B426224D5C130042A993 /* XCTAutomationSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155B425224D5C130042A993 /* XCTAutomationSupport.framework */; };
@@ -416,9 +413,6 @@
 		71BD20731F86116100B36EC2 /* XCUIApplication+FBTouchAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 71BD20711F86116100B36EC2 /* XCUIApplication+FBTouchAction.h */; };
 		71BD20741F86116100B36EC2 /* XCUIApplication+FBTouchAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BD20721F86116100B36EC2 /* XCUIApplication+FBTouchAction.m */; };
 		71BD20781F869E0F00B36EC2 /* FBAppiumTouchActionsIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BD20771F869E0F00B36EC2 /* FBAppiumTouchActionsIntegrationTests.m */; };
-		71DC3003208759E1007671AA /* RoutingHTTPServer.framework in Copy frameworks */ = {isa = PBXBuildFile; fileRef = AD42DD2B1CF1238500806E5D /* RoutingHTTPServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AD35D01A1CF1418E00870A75 /* RoutingHTTPServer.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = AD42DD2B1CF1238500806E5D /* RoutingHTTPServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AD35D0641CF1C2C300870A75 /* RoutingHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD42DD2B1CF1238500806E5D /* RoutingHTTPServer.framework */; };
 		AD35D06C1CF1C35500870A75 /* WebDriverAgentLib.framework in Copy frameworks */ = {isa = PBXBuildFile; fileRef = EE158A991CBD452B00A3E3F0 /* WebDriverAgentLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD6C26941CF2379700F8B5FF /* FBAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = AD6C26921CF2379700F8B5FF /* FBAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD6C26951CF2379700F8B5FF /* FBAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6C26931CF2379700F8B5FF /* FBAlert.m */; };
@@ -820,7 +814,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				641EE7172240DE8C00173FCB /* RoutingHTTPServer.framework in Copy frameworks */,
 				7155B429224D5CC10042A993 /* YYCache.framework in Copy frameworks */,
 				641EE6FD2240C61D00173FCB /* WebDriverAgentLib_tvOS.framework in Copy frameworks */,
 			);
@@ -833,7 +826,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7155B41E224D5B750042A993 /* RoutingHTTPServer.framework in Copy Frameworks */,
 				7155B41F224D5B770042A993 /* YYCache.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -846,7 +838,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7155B428224D5CB10042A993 /* YYCache.framework in Copy frameworks */,
-				71DC3003208759E1007671AA /* RoutingHTTPServer.framework in Copy frameworks */,
 				AD35D06C1CF1C35500870A75 /* WebDriverAgentLib.framework in Copy frameworks */,
 			);
 			name = "Copy frameworks";
@@ -858,7 +849,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AD35D01A1CF1418E00870A75 /* RoutingHTTPServer.framework in Copy Frameworks */,
 				715D5777224DE17E00DA2D99 /* YYCache.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -1341,7 +1331,6 @@
 				7155B41B224D5B5A0042A993 /* libAccessibility.tbd in Frameworks */,
 				7155B41D224D5B6C0042A993 /* YYCache.framework in Frameworks */,
 				7155B427224D5C170042A993 /* XCTAutomationSupport.framework in Frameworks */,
-				641EE7192240DFC100173FCB /* RoutingHTTPServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1358,7 +1347,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7155B40E224D5A850042A993 /* libAccessibility.tbd in Frameworks */,
-				AD35D0641CF1C2C300870A75 /* RoutingHTTPServer.framework in Frameworks */,
 				7155B424224D5BA10042A993 /* XCTest.framework in Frameworks */,
 				716C9347224D540C004B8542 /* libxml2.tbd in Frameworks */,
 				7155B40D224D5A5F0042A993 /* YYCache.framework in Frameworks */,
