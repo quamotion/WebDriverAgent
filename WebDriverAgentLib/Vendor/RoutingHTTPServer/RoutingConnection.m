@@ -3,6 +3,10 @@
 #import "HTTPMessage.h"
 #import "HTTPResponseProxy.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Widiomatic-parentheses"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 @implementation RoutingConnection {
 	__unsafe_unretained RoutingHTTPServer *http;
 	NSDictionary *headers;

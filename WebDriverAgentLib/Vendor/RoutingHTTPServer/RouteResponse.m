@@ -5,6 +5,9 @@
 #import "HTTPAsyncFileResponse.h"
 #import "HTTPResponseProxy.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Widiomatic-parentheses"
+
 @implementation RouteResponse {
 	NSMutableDictionary *headers;
 	HTTPResponseProxy *proxy;

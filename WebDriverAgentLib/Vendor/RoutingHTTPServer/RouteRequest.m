@@ -1,6 +1,9 @@
 #import "RouteRequest.h"
 #import "HTTPMessage.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Widiomatic-parentheses"
+
 @implementation RouteRequest {
 	HTTPMessage *message;
 }

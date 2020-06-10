@@ -1,5 +1,7 @@
 #import "HTTPResponseProxy.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+
 @implementation HTTPResponseProxy
 
 @synthesize response;

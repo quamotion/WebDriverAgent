@@ -2,6 +2,9 @@
 #import "RoutingConnection.h"
 #import "Route.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Widiomatic-parentheses"
+
 @implementation RoutingHTTPServer {
 	NSMutableDictionary *routes;
 	NSMutableDictionary *defaultHeaders;
