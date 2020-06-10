@@ -10,6 +10,12 @@
 
 #import "HTTPLogging.h"
 
+#pragma clang diagnostic ignored "-Wcast-qual"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wextra-semi-stmt"
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+
 //-----------------------------------------------------------------
 #pragma mark log level
 

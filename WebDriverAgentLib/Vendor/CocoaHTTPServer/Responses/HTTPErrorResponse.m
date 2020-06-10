@@ -1,5 +1,8 @@
 #import "HTTPErrorResponse.h"
 
+#pragma clang diagnostic ignored "-Wextra-semi-stmt"
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+
 @implementation HTTPErrorResponse
 
 -(id)initWithErrorCode:(int)httpErrorCode

@@ -1,6 +1,8 @@
 #import "DDData.h"
 #import <CommonCrypto/CommonDigest.h>
 
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wimplicit-int-conversion"
 
 @implementation NSData (DDData)
 

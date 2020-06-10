@@ -5,6 +5,8 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+
 @interface HTTPAuthenticationRequest (PrivateAPI)
 - (NSString *)quotedSubHeaderFieldValue:(NSString *)param fromHeaderFieldValue:(NSString *)header;
 - (NSString *)nonquotedSubHeaderFieldValue:(NSString *)param fromHeaderFieldValue:(NSString *)header;

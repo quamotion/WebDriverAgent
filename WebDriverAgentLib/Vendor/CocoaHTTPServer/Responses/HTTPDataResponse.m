@@ -5,6 +5,10 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Wcast-qual"
+#pragma clang diagnostic ignored "-Wunused-variable"
+
 // Log levels : off, error, warn, info, verbose
 // Other flags: trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_OFF; // | HTTP_LOG_FLAG_TRACE;
@@ -60,7 +64,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_OFF; // | HTTP_LOG_FLAG_TRACE;
 	NSUInteger remaining = [data length] - offset;
 	NSUInteger length = lengthParameter < remaining ? lengthParameter : remaining;
 	
-	void *bytes = (void *)([data bytes] + offset);
+	void *bytes = (void *)(((char*)[data bytes]) + offset);
 	
 	offset += length;
 	

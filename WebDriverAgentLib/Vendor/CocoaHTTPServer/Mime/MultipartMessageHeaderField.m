@@ -2,6 +2,11 @@
 #import "MultipartMessageHeaderField.h"
 #import "HTTPLogging.h"
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Wsign-compare"
+#pragma clang diagnostic ignored "-Wcast-qual"
+#pragma clang diagnostic ignored "-Wunused-variable"
+
 //-----------------------------------------------------------------
 #pragma mark log level
 

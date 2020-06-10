@@ -5,6 +5,9 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
+#pragma clang diagnostic ignored "-Wdirect-ivar-access"
+#pragma clang diagnostic ignored "-Wunused-variable"
+
 // Log levels : off, error, warn, info, verbose
 // Other flags: trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_OFF; // | HTTP_LOG_FLAG_TRACE;

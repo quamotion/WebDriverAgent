@@ -1,6 +1,8 @@
 #import "DDRange.h"
 #import "DDNumber.h"
 
+#pragma clang diagnostic ignored "-Wformat-non-iso"
+
 DDRange DDUnionRange(DDRange range1, DDRange range2)
 {
 	DDRange result;
