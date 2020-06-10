@@ -225,41 +225,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark HTTPS
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Returns whether or not the server is configured to be a secure server.
- * In other words, all connections to this server are immediately secured, thus only secure connections are allowed.
- * This is the equivalent of having an https server, where it is assumed that all connections must be secure.
- * If this is the case, then unsecure connections will not be allowed on this server, and a separate unsecure server
- * would need to be run on a separate port in order to support unsecure connections.
- * 
- * Note: In order to support secure connections, the sslIdentityAndCertificates method must be implemented.
-**/
-- (BOOL)isSecureServer
-{
-	HTTPLogTrace();
-	
-	// Override me to create an https server...
-	
-	return NO;
-}
-
-/**
- * This method is expected to returns an array appropriate for use in kCFStreamSSLCertificates SSL Settings.
- * It should be an array of SecCertificateRefs except for the first element in the array, which is a SecIdentityRef.
-**/
-- (NSArray *)sslIdentityAndCertificates
-{
-	HTTPLogTrace();
-	
-	// Override me to provide the proper required SSL identity.
-	
-	return nil;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Core
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -303,33 +268,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	// Be sure to invoke [super startConnection] when you're done.
 	
 	HTTPLogTrace();
-	
-	if ([self isSecureServer])
-	{
-		// We are configured to be an HTTPS server.
-		// That is, we secure via SSL/TLS the connection prior to any communication.
-		
-		NSArray *certificates = [self sslIdentityAndCertificates];
-		
-		if ([certificates count] > 0)
-		{
-			// All connections are assumed to be secure. Only secure connections are allowed on this server.
-			NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithCapacity:3];
-			
-			// Configure this connection as the server
-			[settings setObject:[NSNumber numberWithBool:YES]
-						 forKey:(NSString *)kCFStreamSSLIsServer];
-			
-			[settings setObject:certificates
-						 forKey:(NSString *)kCFStreamSSLCertificates];
-			
-			// Configure this connection to use the highest possible SSL level
-			[settings setObject:(NSString *)kCFStreamSocketSecurityLevelNegotiatedSSL
-						 forKey:(NSString *)kCFStreamSSLLevel];
-			
-			[asyncSocket startTLS:settings];
-		}
-	}
 	
 	[self startReadingRequest];
 }
