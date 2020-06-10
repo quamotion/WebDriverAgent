@@ -436,14 +436,8 @@
 		E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */; };
 		E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC56249131880060D7EB /* HTTPRedirectResponse.m */; };
 		E444DC63249131890060D7EB /* HTTPRedirectResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC57249131880060D7EB /* HTTPRedirectResponse.h */; };
-		E444DC64249131890060D7EB /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */; };
 		E444DC65249131890060D7EB /* HTTPErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC59249131880060D7EB /* HTTPErrorResponse.h */; };
-		E444DC66249131890060D7EB /* HTTPFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5A249131880060D7EB /* HTTPFileResponse.h */; };
 		E444DC67249131890060D7EB /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5B249131880060D7EB /* HTTPDataResponse.m */; };
-		E444DC68249131890060D7EB /* HTTPDynamicFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */; };
-		E444DC69249131890060D7EB /* HTTPAsyncFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */; };
-		E444DC6A249131890060D7EB /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5E249131890060D7EB /* HTTPFileResponse.m */; };
-		E444DC6B249131890060D7EB /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */; };
 		E444DC6C249131890060D7EB /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC60249131890060D7EB /* HTTPDataResponse.h */; };
 		E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC61249131890060D7EB /* HTTPErrorResponse.m */; };
 		E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */; };
@@ -995,14 +989,8 @@
 		E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = WebDriverAgentLib/Vendor/CocoaAsyncSocket/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
 		E444DC56249131880060D7EB /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPRedirectResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC57249131880060D7EB /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPRedirectResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.h; sourceTree = SOURCE_ROOT; };
-		E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDynamicFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDynamicFileResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC59249131880060D7EB /* HTTPErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPErrorResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.h; sourceTree = SOURCE_ROOT; };
-		E444DC5A249131880060D7EB /* HTTPFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPFileResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC5B249131880060D7EB /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.m; sourceTree = SOURCE_ROOT; };
-		E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDynamicFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDynamicFileResponse.h; sourceTree = SOURCE_ROOT; };
-		E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAsyncFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPAsyncFileResponse.h; sourceTree = SOURCE_ROOT; };
-		E444DC5E249131890060D7EB /* HTTPFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPFileResponse.m; sourceTree = SOURCE_ROOT; };
-		E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPAsyncFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPAsyncFileResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC60249131890060D7EB /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.h; sourceTree = SOURCE_ROOT; };
 		E444DC61249131890060D7EB /* HTTPErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPErrorResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.m; sourceTree = SOURCE_ROOT; };
 		E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeaderField.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeaderField.m; sourceTree = SOURCE_ROOT; };
@@ -1628,16 +1616,10 @@
 		E444DC55249131740060D7EB /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */,
-				E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */,
 				E444DC60249131890060D7EB /* HTTPDataResponse.h */,
 				E444DC5B249131880060D7EB /* HTTPDataResponse.m */,
-				E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */,
-				E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */,
 				E444DC59249131880060D7EB /* HTTPErrorResponse.h */,
 				E444DC61249131890060D7EB /* HTTPErrorResponse.m */,
-				E444DC5A249131880060D7EB /* HTTPFileResponse.h */,
-				E444DC5E249131890060D7EB /* HTTPFileResponse.m */,
 				E444DC57249131880060D7EB /* HTTPRedirectResponse.h */,
 				E444DC56249131880060D7EB /* HTTPRedirectResponse.m */,
 			);
@@ -2379,7 +2361,6 @@
 				EEE376491D59FAE900ED88DD /* XCUIElement+FBWebDriverAttributes.h in Headers */,
 				715AFAC11FFA29180053896D /* FBScreen.h in Headers */,
 				EE6B64FD1D0F86EF00E85F5D /* XCTestPrivateSymbols.h in Headers */,
-				E444DC66249131890060D7EB /* HTTPFileResponse.h in Headers */,
 				AD76723D1D6B7CC000610457 /* XCUIElement+FBTyping.h in Headers */,
 				EEE376451D59F81400ED88DD /* XCUIElement+FBUtilities.h in Headers */,
 				EE158AB21CBD456F00A3E3F0 /* XCUIElement+FBScrolling.h in Headers */,
@@ -2452,7 +2433,6 @@
 				EE35AD4F1E3B77D600A02D78 /* XCTestManager_TestsInterface-Protocol.h in Headers */,
 				719CD8FC2126C88B00C7D0C2 /* XCUIApplication+FBAlert.h in Headers */,
 				EE35AD2B1E3B77D600A02D78 /* XCDeviceEvent.h in Headers */,
-				E444DC68249131890060D7EB /* HTTPDynamicFileResponse.h in Headers */,
 				EE18883A1DA661C400307AA8 /* FBMathUtils.h in Headers */,
 				71B155DA23070ECF00646AFB /* FBHTTPStatusCodes.h in Headers */,
 				EE35AD221E3B77D600A02D78 /* UISwipeGestureRecognizer-RecordingAdditions.h in Headers */,
@@ -2545,7 +2525,6 @@
 				EE35AD351E3B77D600A02D78 /* XCSourceCodeRecording.h in Headers */,
 				E444DC99249131D40060D7EB /* HTTPLogging.h in Headers */,
 				E444DC9B249131D40060D7EB /* HTTPResponse.h in Headers */,
-				E444DC69249131890060D7EB /* HTTPAsyncFileResponse.h in Headers */,
 				EEE9B4721CD02B88009D2030 /* FBRunLoopSpinner.h in Headers */,
 				EE3A18621CDE618F00DE4205 /* FBErrorBuilder.h in Headers */,
 				EE35AD261E3B77D600A02D78 /* XCApplicationMonitor_iOS.h in Headers */,
@@ -3085,7 +3064,6 @@
 				EEE9B4731CD02B88009D2030 /* FBRunLoopSpinner.m in Sources */,
 				719CD8F92126C78F00C7D0C2 /* FBAlertsMonitor.m in Sources */,
 				71A7EAFA1E224648001DA4F2 /* FBClassChainQueryParser.m in Sources */,
-				E444DC6A249131890060D7EB /* HTTPFileResponse.m in Sources */,
 				E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */,
 				71A224E61DE2F56600844D55 /* NSPredicate+FBFormat.m in Sources */,
 				E444DC85249131B10060D7EB /* DDNumber.m in Sources */,
@@ -3119,7 +3097,6 @@
 				AD6C26991CF2481700F8B5FF /* XCUIDevice+FBHelpers.m in Sources */,
 				EE6B64FE1D0F86EF00E85F5D /* XCTestPrivateSymbols.m in Sources */,
 				AD76723E1D6B7CC000610457 /* XCUIElement+FBTyping.m in Sources */,
-				E444DC64249131890060D7EB /* HTTPDynamicFileResponse.m in Sources */,
 				EE158AAF1CBD456F00A3E3F0 /* XCUIElement+FBAccessibility.m in Sources */,
 				7150348821A6DAD600A0F4BA /* FBImageUtils.m in Sources */,
 				E444DCAB24913C220060D7EB /* HTTPResponseProxy.m in Sources */,
@@ -3135,7 +3112,6 @@
 				EE158AB91CBD456F00A3E3F0 /* FBAlertViewCommands.m in Sources */,
 				EE158AB31CBD456F00A3E3F0 /* XCUIElement+FBScrolling.m in Sources */,
 				EE158AC91CBD456F00A3E3F0 /* FBSessionCommands.m in Sources */,
-				E444DC6B249131890060D7EB /* HTTPAsyncFileResponse.m in Sources */,
 				EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */,
 				EE9B76A71CF7A43900275851 /* FBConfiguration.m in Sources */,
 				E444DC9C249131D40060D7EB /* HTTPServer.m in Sources */,

@@ -16,7 +16,5 @@
 - (void)respondWithString:(NSString *)string;
 - (void)respondWithString:(NSString *)string encoding:(NSStringEncoding)encoding;
 - (void)respondWithData:(NSData *)data;
-- (void)respondWithFile:(NSString *)path;
-- (void)respondWithFile:(NSString *)path async:(BOOL)async;
 
 @end

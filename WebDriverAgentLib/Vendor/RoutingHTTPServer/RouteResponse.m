@@ -1,8 +1,6 @@
 #import "RouteResponse.h"
 #import "HTTPConnection.h"
 #import "HTTPDataResponse.h"
-#import "HTTPFileResponse.h"
-#import "HTTPAsyncFileResponse.h"
 #import "HTTPResponseProxy.h"
 
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
@@ -63,18 +61,6 @@
 
 - (void)respondWithData:(NSData *)data {
 	self.response = [[HTTPDataResponse alloc] initWithData:data];
-}
-
-- (void)respondWithFile:(NSString *)path {
-	[self respondWithFile:path async:NO];
-}
-
-- (void)respondWithFile:(NSString *)path async:(BOOL)async {
-	if (async) {
-		self.response = [[HTTPAsyncFileResponse alloc] initWithFilePath:path forConnection:connection];
-	} else {
-		self.response = [[HTTPFileResponse alloc] initWithFilePath:path forConnection:connection];
-	}
 }
 
 @end

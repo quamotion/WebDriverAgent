@@ -5,8 +5,6 @@
 #import "HTTPResponse.h"
 #import "DDNumber.h"
 #import "DDRange.h"
-#import "HTTPFileResponse.h"
-#import "HTTPAsyncFileResponse.h"
 #import "HTTPLogging.h"
 
 #if ! __has_feature(objc_arc)
@@ -1302,20 +1300,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	HTTPLogTrace();
 	
 	// Override me to provide custom responses.
-	
-	NSString *filePath = [self filePathForURI:path allowDirectory:NO];
-	
-	BOOL isDir = NO;
-	
-	if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDir] && !isDir)
-	{
-		return [[HTTPFileResponse alloc] initWithFilePath:filePath forConnection:self];
-	
-		// Use me instead for asynchronous file IO.
-		// Generally better for larger files.
-		
-	//	return [[[HTTPAsyncFileResponse alloc] initWithFilePath:filePath forConnection:self] autorelease];
-	}
 	
 	return nil;
 }
