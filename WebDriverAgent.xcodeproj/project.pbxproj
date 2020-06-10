@@ -462,8 +462,6 @@
 		E444DCB424913C220060D7EB /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA824913C220060D7EB /* RoutingHTTPServer.m */; };
 		E444DCB524913C220060D7EB /* RouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA924913C220060D7EB /* RouteRequest.m */; };
 		E444DCB624913C220060D7EB /* RouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCAA24913C220060D7EB /* RouteRequest.h */; };
-		E444DCB9249172D60060D7EB /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCB7249172D50060D7EB /* DDData.m */; };
-		E444DCBA249172D60060D7EB /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCB8249172D60060D7EB /* DDData.h */; };
 		EE006EAD1EB99B15006900A4 /* FBElementVisibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */; };
 		EE006EB01EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */; };
 		EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */; };
@@ -1007,8 +1005,6 @@
 		E444DCA824913C220060D7EB /* RoutingHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutingHTTPServer.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RoutingHTTPServer.m; sourceTree = SOURCE_ROOT; };
 		E444DCA924913C220060D7EB /* RouteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteRequest.m; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteRequest.m; sourceTree = SOURCE_ROOT; };
 		E444DCAA24913C220060D7EB /* RouteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteRequest.h; path = WebDriverAgentLib/Vendor/RoutingHTTPServer/RouteRequest.h; sourceTree = SOURCE_ROOT; };
-		E444DCB7249172D50060D7EB /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDData.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDData.m; sourceTree = SOURCE_ROOT; };
-		E444DCB8249172D60060D7EB /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDData.h; sourceTree = SOURCE_ROOT; };
 		EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBElementVisibilityTests.m; sourceTree = "<group>"; };
 		EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCElementSnapshot+FBHitPoint.h"; sourceTree = "<group>"; };
 		EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCElementSnapshot+FBHitPoint.m"; sourceTree = "<group>"; };
@@ -1573,8 +1569,6 @@
 		E444DC53249131640060D7EB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				E444DCB8249172D60060D7EB /* DDData.h */,
-				E444DCB7249172D50060D7EB /* DDData.m */,
 				E444DC7D249131B00060D7EB /* DDNumber.h */,
 				E444DC7F249131B00060D7EB /* DDNumber.m */,
 				E444DC7B249131B00060D7EB /* DDRange.h */,
@@ -2361,7 +2355,6 @@
 				64B2650A228CE4FF002A5025 /* FBTVNavigationTracker-Private.h in Headers */,
 				E444DC5024912F050060D7EB /* GCDAsyncSocket.h in Headers */,
 				EE158AF51CBD456F00A3E3F0 /* FBApplication.h in Headers */,
-				E444DCBA249172D60060D7EB /* DDData.h in Headers */,
 				71B155DF23080CA600646AFB /* FBProtocolHelpers.h in Headers */,
 				EE35AD4B1E3B77D600A02D78 /* XCTestExpectationWaiter.h in Headers */,
 				EE35AD1E1E3B77D600A02D78 /* UIGestureRecognizer-RecordingAdditions.h in Headers */,
@@ -3064,7 +3057,6 @@
 				E444DCAB24913C220060D7EB /* HTTPResponseProxy.m in Sources */,
 				E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */,
 				E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */,
-				E444DCB9249172D60060D7EB /* DDData.m in Sources */,
 				EE158AE51CBD456F00A3E3F0 /* FBSession.m in Sources */,
 				E444DCB224913C220060D7EB /* RoutingConnection.m in Sources */,
 				EE158AC11CBD456F00A3E3F0 /* FBFindElementCommands.m in Sources */,
