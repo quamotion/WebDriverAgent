@@ -45,9 +45,7 @@
 	
 	// Connection management
 	NSMutableArray *connections;
-	NSMutableArray *webSockets;
 	NSLock *connectionsLock;
-	NSLock *webSocketsLock;
 	
 	BOOL isRunning;
 }
@@ -197,9 +195,6 @@
 
 - (BOOL)isRunning;
 
-- (void)addWebSocket:(WebSocket *)ws;
-
 - (NSUInteger)numberOfHTTPConnections;
-- (NSUInteger)numberOfWebSocketConnections;
 
 @end

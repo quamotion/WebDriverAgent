@@ -9,7 +9,6 @@
 #import "DDData.h"
 #import "HTTPFileResponse.h"
 #import "HTTPAsyncFileResponse.h"
-#import "WebSocket.h"
 #import "HTTPLogging.h"
 
 #if ! __has_feature(objc_arc)
@@ -923,67 +922,6 @@ static NSMutableArray *recentNonces;
 	
 	// Extract requested URI
 	NSString *uri = [self requestURI];
-	
-	// Check for WebSocket request
-	if ([WebSocket isWebSocketRequest:request])
-	{
-		HTTPLogVerbose(@"isWebSocket");
-		
-		WebSocket *ws = [self webSocketForURI:uri];
-		
-		if (ws == nil)
-		{
-			[self handleResourceNotFound];
-		}
-		else
-		{
-			[ws start];
-			
-			[[config server] addWebSocket:ws];
-			
-			// The WebSocket should now be the delegate of the underlying socket.
-			// But gracefully handle the situation if it forgot.
-			if ([asyncSocket delegate] == self)
-			{
-				HTTPLogWarn(@"%@[%p]: WebSocket forgot to set itself as socket delegate", THIS_FILE, self);
-				
-				// Disconnect the socket.
-				// The socketDidDisconnect delegate method will handle everything else.
-				[asyncSocket disconnect];
-			}
-			else
-			{
-				// The WebSocket is using the socket,
-				// so make sure we don't disconnect it in the dealloc method.
-				asyncSocket = nil;
-				
-				[self die];
-				
-				// Note: There is a timing issue here that should be pointed out.
-				// 
-				// A bug that existed in previous versions happend like so:
-				// - We invoked [self die]
-				// - This caused us to get released, and our dealloc method to start executing
-				// - Meanwhile, AsyncSocket noticed a disconnect, and began to dispatch a socketDidDisconnect at us
-				// - The dealloc method finishes execution, and our instance gets freed
-				// - The socketDidDisconnect gets run, and a crash occurs
-				// 
-				// So the issue we want to avoid is releasing ourself when there is a possibility
-				// that AsyncSocket might be gearing up to queue a socketDidDisconnect for us.
-				// 
-				// In this particular situation notice that we invoke [asyncSocket delegate].
-				// This method is synchronous concerning AsyncSocket's internal socketQueue.
-				// Which means we can be sure, when it returns, that AsyncSocket has already
-				// queued any delegate methods for us if it was going to.
-				// And if the delegate methods are queued, then we've been properly retained.
-				// Meaning we won't get released / dealloc'd until the delegate method has finished executing.
-				// 
-				// In this rare situation, the die method will get invoked twice.
-			}
-		}
-		
-		return;
-	}
 	
 	// Check Authentication (if needed)
 	// If not properly authenticated for resource, issue Unauthorized response

@@ -458,11 +458,9 @@
 		E444DC83249131B10060D7EB /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7D249131B00060D7EB /* DDNumber.h */; };
 		E444DC84249131B10060D7EB /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7E249131B00060D7EB /* DDRange.m */; };
 		E444DC85249131B10060D7EB /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7F249131B00060D7EB /* DDNumber.m */; };
-		E444DC92249131D40060D7EB /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC86249131D30060D7EB /* WebSocket.m */; };
 		E444DC93249131D40060D7EB /* HTTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC87249131D30060D7EB /* HTTPMessage.h */; };
 		E444DC94249131D40060D7EB /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC88249131D30060D7EB /* HTTPAuthenticationRequest.h */; };
 		E444DC95249131D40060D7EB /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC89249131D30060D7EB /* HTTPConnection.h */; };
-		E444DC96249131D40060D7EB /* WebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8A249131D30060D7EB /* WebSocket.h */; };
 		E444DC97249131D40060D7EB /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8B249131D30060D7EB /* HTTPServer.h */; };
 		E444DC98249131D40060D7EB /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC8C249131D30060D7EB /* HTTPConnection.m */; };
 		E444DC99249131D40060D7EB /* HTTPLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8D249131D30060D7EB /* HTTPLogging.h */; };
@@ -1021,11 +1019,9 @@
 		E444DC7D249131B00060D7EB /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDNumber.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDNumber.h; sourceTree = SOURCE_ROOT; };
 		E444DC7E249131B00060D7EB /* DDRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDRange.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDRange.m; sourceTree = SOURCE_ROOT; };
 		E444DC7F249131B00060D7EB /* DDNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDNumber.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDNumber.m; sourceTree = SOURCE_ROOT; };
-		E444DC86249131D30060D7EB /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebSocket.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/WebSocket.m; sourceTree = SOURCE_ROOT; };
 		E444DC87249131D30060D7EB /* HTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPMessage.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPMessage.h; sourceTree = SOURCE_ROOT; };
 		E444DC88249131D30060D7EB /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPAuthenticationRequest.h; sourceTree = SOURCE_ROOT; };
 		E444DC89249131D30060D7EB /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPConnection.h; sourceTree = SOURCE_ROOT; };
-		E444DC8A249131D30060D7EB /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebSocket.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/WebSocket.h; sourceTree = SOURCE_ROOT; };
 		E444DC8B249131D30060D7EB /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPServer.h; sourceTree = SOURCE_ROOT; };
 		E444DC8C249131D30060D7EB /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPConnection.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPConnection.m; sourceTree = SOURCE_ROOT; };
 		E444DC8D249131D30060D7EB /* HTTPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPLogging.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPLogging.h; sourceTree = SOURCE_ROOT; };
@@ -1602,8 +1598,6 @@
 				E444DC8F249131D40060D7EB /* HTTPResponse.h */,
 				E444DC8B249131D30060D7EB /* HTTPServer.h */,
 				E444DC90249131D40060D7EB /* HTTPServer.m */,
-				E444DC8A249131D30060D7EB /* WebSocket.h */,
-				E444DC86249131D30060D7EB /* WebSocket.m */,
 				E444DC55249131740060D7EB /* Responses */,
 				E444DC54249131690060D7EB /* Mime */,
 				E444DC53249131640060D7EB /* Categories */,
@@ -2602,7 +2596,6 @@
 				EE35AD6C1E3B77D600A02D78 /* XCUIApplicationProcess.h in Headers */,
 				7140974B1FAE1B51008FB2C5 /* FBW3CActionsSynthesizer.h in Headers */,
 				EE35AD151E3B77D600A02D78 /* CDStructures.h in Headers */,
-				E444DC96249131D40060D7EB /* WebSocket.h in Headers */,
 				EE35AD311E3B77D600A02D78 /* XCKeyboardLayout.h in Headers */,
 				E444DCB624913C220060D7EB /* RouteRequest.h in Headers */,
 				EE35AD3B1E3B77D600A02D78 /* XCTAsyncActivity-Protocol.h in Headers */,
@@ -3109,7 +3102,6 @@
 				13815F712328D20400CDAB61 /* FBActiveAppDetectionPoint.m in Sources */,
 				71B49EC81ED1A58100D51AD6 /* XCUIElement+FBUID.m in Sources */,
 				EE158AE21CBD456F00A3E3F0 /* FBRouteRequest.m in Sources */,
-				E444DC92249131D40060D7EB /* WebSocket.m in Sources */,
 				EE158ADB1CBD456F00A3E3F0 /* FBResponseJSONPayload.m in Sources */,
 				EE7E271F1D06C69F001BEC7B /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
 				7155D704211DCEF400166C20 /* FBMjpegServer.m in Sources */,

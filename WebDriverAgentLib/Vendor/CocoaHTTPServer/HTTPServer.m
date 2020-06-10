@@ -1,7 +1,6 @@
 #import "HTTPServer.h"
 #import "GCDAsyncSocket.h"
 #import "HTTPConnection.h"
-#import "WebSocket.h"
 #import "HTTPLogging.h"
 
 #if ! __has_feature(objc_arc)
@@ -80,23 +79,15 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		// by automatically appending a digit to the end of the name.
 		name = @"";
 		
-		// Initialize arrays to hold all the HTTP and webSocket connections
+		// Initialize arrays to hold all the HTTP connections
 		connections = [[NSMutableArray alloc] init];
-		webSockets  = [[NSMutableArray alloc] init];
 		
 		connectionsLock = [[NSLock alloc] init];
-		webSocketsLock  = [[NSLock alloc] init];
 		
 		// Register for notifications of closed connections
 		[[NSNotificationCenter defaultCenter] addObserver:self
 		                                         selector:@selector(connectionDidDie:)
 		                                             name:HTTPConnectionDidDieNotification
-		                                           object:nil];
-		
-		// Register for notifications of closed websocket connections
-		[[NSNotificationCenter defaultCenter] addObserver:self
-		                                         selector:@selector(webSocketDidDie:)
-		                                             name:WebSocketDidDieNotification
 		                                           object:nil];
 		
 		isRunning = NO;
@@ -464,15 +455,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 			}
 			[connections removeAllObjects];
 			[connectionsLock unlock];
-			
-			// Stop all WebSocket connections the server owns
-			[webSocketsLock lock];
-			for (WebSocket *webSocket in webSockets)
-			{
-				[webSocket stop];
-			}
-			[webSockets removeAllObjects];
-			[webSocketsLock unlock];
 		}
 	}});
 }
@@ -486,16 +468,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	});
 	
 	return result;
-}
-
-- (void)addWebSocket:(WebSocket *)ws
-{
-	[webSocketsLock lock];
-	
-	HTTPLogTrace();
-	[webSockets addObject:ws];
-	
-	[webSocketsLock unlock];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -512,20 +484,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connectionsLock lock];
 	result = [connections count];
 	[connectionsLock unlock];
-	
-	return result;
-}
-
-/**
- * Returns the number of websocket client connections that are currently connected to the server.
-**/
-- (NSUInteger)numberOfWebSocketConnections
-{
-	NSUInteger result = 0;
-	
-	[webSocketsLock lock];
-	result = [webSockets count];
-	[webSocketsLock unlock];
 	
 	return result;
 }
@@ -681,22 +639,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	[connections removeObject:[notification object]];
 	
 	[connectionsLock unlock];
-}
-
-/**
- * This method is automatically called when a notification of type WebSocketDidDieNotification is posted.
- * It allows us to remove the websocket from our array.
-**/
-- (void)webSocketDidDie:(NSNotification *)notification
-{
-	// Note: This method is called on the connection queue that posted the notification
-	
-	[webSocketsLock lock];
-	
-	HTTPLogTrace();
-	[webSockets removeObject:[notification object]];
-	
-	[webSocketsLock unlock];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
