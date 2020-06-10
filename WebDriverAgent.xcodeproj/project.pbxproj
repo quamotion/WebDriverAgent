@@ -462,6 +462,20 @@
 		E444DCB424913C220060D7EB /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA824913C220060D7EB /* RoutingHTTPServer.m */; };
 		E444DCB524913C220060D7EB /* RouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA924913C220060D7EB /* RouteRequest.m */; };
 		E444DCB624913C220060D7EB /* RouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DCAA24913C220060D7EB /* RouteRequest.h */; };
+		E444DCBC24917A5E0060D7EB /* HTTPResponseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC9F24913C210060D7EB /* HTTPResponseProxy.m */; };
+		E444DCBE24917A5E0060D7EB /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA024913C210060D7EB /* Route.m */; };
+		E444DCC024917A5E0060D7EB /* RouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA924913C220060D7EB /* RouteRequest.m */; };
+		E444DCC224917A5E0060D7EB /* RouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA424913C210060D7EB /* RouteResponse.m */; };
+		E444DCC424917A5E0060D7EB /* RoutingConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA624913C210060D7EB /* RoutingConnection.m */; };
+		E444DCC624917A5E0060D7EB /* RoutingHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DCA824913C220060D7EB /* RoutingHTTPServer.m */; };
+		E444DCC824917A5E0060D7EB /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC8C249131D30060D7EB /* HTTPConnection.m */; };
+		E444DCCB24917A5E0060D7EB /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC91249131D40060D7EB /* HTTPMessage.m */; };
+		E444DCCE24917A5E0060D7EB /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC90249131D40060D7EB /* HTTPServer.m */; };
+		E444DCD024917A5E0060D7EB /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5B249131880060D7EB /* HTTPDataResponse.m */; };
+		E444DCD224917A5E0060D7EB /* HTTPErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC61249131890060D7EB /* HTTPErrorResponse.m */; };
+		E444DCD424917A5E0060D7EB /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7F249131B00060D7EB /* DDNumber.m */; };
+		E444DCD624917A5E0060D7EB /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7E249131B00060D7EB /* DDRange.m */; };
+		E444DCD824917A5E0060D7EB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */; };
 		EE006EAD1EB99B15006900A4 /* FBElementVisibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */; };
 		EE006EB01EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */; };
 		EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */; };
@@ -2882,6 +2896,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E444DCBC24917A5E0060D7EB /* HTTPResponseProxy.m in Sources */,
+				E444DCBE24917A5E0060D7EB /* Route.m in Sources */,
+				E444DCC024917A5E0060D7EB /* RouteRequest.m in Sources */,
+				E444DCC224917A5E0060D7EB /* RouteResponse.m in Sources */,
+				E444DCC424917A5E0060D7EB /* RoutingConnection.m in Sources */,
+				E444DCC624917A5E0060D7EB /* RoutingHTTPServer.m in Sources */,
+				E444DCC824917A5E0060D7EB /* HTTPConnection.m in Sources */,
+				E444DCCB24917A5E0060D7EB /* HTTPMessage.m in Sources */,
+				E444DCCE24917A5E0060D7EB /* HTTPServer.m in Sources */,
+				E444DCD024917A5E0060D7EB /* HTTPDataResponse.m in Sources */,
+				E444DCD224917A5E0060D7EB /* HTTPErrorResponse.m in Sources */,
+				E444DCD424917A5E0060D7EB /* DDNumber.m in Sources */,
+				E444DCD624917A5E0060D7EB /* DDRange.m in Sources */,
+				E444DCD824917A5E0060D7EB /* GCDAsyncSocket.m in Sources */,
 				641EE5D72240C5CA00173FCB /* FBScreenshotCommands.m in Sources */,
 				641EE5D82240C5CA00173FCB /* FBPredicate.m in Sources */,
 				641EE5D92240C5CA00173FCB /* XCUIElement+FBPickerWheel.m in Sources */,
