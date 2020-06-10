@@ -8,6 +8,7 @@
 //  https://github.com/robbiehanson/CocoaAsyncSocket
 //
 
+#pragma clang diagnostic ignored "-Wunknown-warning-option"
 #pragma clang diagnostic ignored "-Wimplicit-retain-self"
 #pragma clang diagnostic ignored "-Wfloat-conversion"
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
