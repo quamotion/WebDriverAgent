@@ -440,6 +440,42 @@
 		C8FB547A22D4C1FC00B69954 /* FBUnattachedAppLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FB547822D4C1FC00B69954 /* FBUnattachedAppLauncher.m */; };
 		E444DC5024912F050060D7EB /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC4E24912F050060D7EB /* GCDAsyncSocket.h */; };
 		E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */; };
+		E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC56249131880060D7EB /* HTTPRedirectResponse.m */; };
+		E444DC63249131890060D7EB /* HTTPRedirectResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC57249131880060D7EB /* HTTPRedirectResponse.h */; };
+		E444DC64249131890060D7EB /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */; };
+		E444DC65249131890060D7EB /* HTTPErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC59249131880060D7EB /* HTTPErrorResponse.h */; };
+		E444DC66249131890060D7EB /* HTTPFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5A249131880060D7EB /* HTTPFileResponse.h */; };
+		E444DC67249131890060D7EB /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5B249131880060D7EB /* HTTPDataResponse.m */; };
+		E444DC68249131890060D7EB /* HTTPDynamicFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */; };
+		E444DC69249131890060D7EB /* HTTPAsyncFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */; };
+		E444DC6A249131890060D7EB /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5E249131890060D7EB /* HTTPFileResponse.m */; };
+		E444DC6B249131890060D7EB /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */; };
+		E444DC6C249131890060D7EB /* HTTPDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC60249131890060D7EB /* HTTPDataResponse.h */; };
+		E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC61249131890060D7EB /* HTTPErrorResponse.m */; };
+		E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */; };
+		E444DC752491319B0060D7EB /* MultipartMessageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */; };
+		E444DC762491319B0060D7EB /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC702491319A0060D7EB /* MultipartMessageHeader.m */; };
+		E444DC772491319B0060D7EB /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC712491319A0060D7EB /* MultipartFormDataParser.m */; };
+		E444DC782491319B0060D7EB /* MultipartFormDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC722491319A0060D7EB /* MultipartFormDataParser.h */; };
+		E444DC792491319B0060D7EB /* MultipartMessageHeaderField.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */; };
+		E444DC80249131B10060D7EB /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7A249131B00060D7EB /* DDData.m */; };
+		E444DC81249131B10060D7EB /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7B249131B00060D7EB /* DDRange.h */; };
+		E444DC82249131B10060D7EB /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7C249131B00060D7EB /* DDData.h */; };
+		E444DC83249131B10060D7EB /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC7D249131B00060D7EB /* DDNumber.h */; };
+		E444DC84249131B10060D7EB /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7E249131B00060D7EB /* DDRange.m */; };
+		E444DC85249131B10060D7EB /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC7F249131B00060D7EB /* DDNumber.m */; };
+		E444DC92249131D40060D7EB /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC86249131D30060D7EB /* WebSocket.m */; };
+		E444DC93249131D40060D7EB /* HTTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC87249131D30060D7EB /* HTTPMessage.h */; };
+		E444DC94249131D40060D7EB /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC88249131D30060D7EB /* HTTPAuthenticationRequest.h */; };
+		E444DC95249131D40060D7EB /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC89249131D30060D7EB /* HTTPConnection.h */; };
+		E444DC96249131D40060D7EB /* WebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8A249131D30060D7EB /* WebSocket.h */; };
+		E444DC97249131D40060D7EB /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8B249131D30060D7EB /* HTTPServer.h */; };
+		E444DC98249131D40060D7EB /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC8C249131D30060D7EB /* HTTPConnection.m */; };
+		E444DC99249131D40060D7EB /* HTTPLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8D249131D30060D7EB /* HTTPLogging.h */; };
+		E444DC9A249131D40060D7EB /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC8E249131D30060D7EB /* HTTPAuthenticationRequest.m */; };
+		E444DC9B249131D40060D7EB /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E444DC8F249131D40060D7EB /* HTTPResponse.h */; };
+		E444DC9C249131D40060D7EB /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC90249131D40060D7EB /* HTTPServer.m */; };
+		E444DC9D249131D40060D7EB /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E444DC91249131D40060D7EB /* HTTPMessage.m */; };
 		EE006EAD1EB99B15006900A4 /* FBElementVisibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */; };
 		EE006EB01EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */; };
 		EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */; };
@@ -959,6 +995,42 @@
 		C8FB547822D4C1FC00B69954 /* FBUnattachedAppLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBUnattachedAppLauncher.m; sourceTree = "<group>"; };
 		E444DC4E24912F050060D7EB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = WebDriverAgentLib/Vendor/CocoaAsyncSocket/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
 		E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = WebDriverAgentLib/Vendor/CocoaAsyncSocket/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
+		E444DC56249131880060D7EB /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPRedirectResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC57249131880060D7EB /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPRedirectResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPRedirectResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDynamicFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDynamicFileResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC59249131880060D7EB /* HTTPErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPErrorResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC5A249131880060D7EB /* HTTPFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPFileResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC5B249131880060D7EB /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPDataResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDynamicFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDynamicFileResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAsyncFileResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPAsyncFileResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC5E249131890060D7EB /* HTTPFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPFileResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPAsyncFileResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPAsyncFileResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC60249131890060D7EB /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPDataResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC61249131890060D7EB /* HTTPErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPErrorResponse.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Responses/HTTPErrorResponse.m; sourceTree = SOURCE_ROOT; };
+		E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeaderField.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeaderField.m; sourceTree = SOURCE_ROOT; };
+		E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeader.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeader.h; sourceTree = SOURCE_ROOT; };
+		E444DC702491319A0060D7EB /* MultipartMessageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartMessageHeader.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeader.m; sourceTree = SOURCE_ROOT; };
+		E444DC712491319A0060D7EB /* MultipartFormDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartFormDataParser.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartFormDataParser.m; sourceTree = SOURCE_ROOT; };
+		E444DC722491319A0060D7EB /* MultipartFormDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartFormDataParser.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartFormDataParser.h; sourceTree = SOURCE_ROOT; };
+		E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeaderField.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Mime/MultipartMessageHeaderField.h; sourceTree = SOURCE_ROOT; };
+		E444DC7A249131B00060D7EB /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDData.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDData.m; sourceTree = SOURCE_ROOT; };
+		E444DC7B249131B00060D7EB /* DDRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDRange.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDRange.h; sourceTree = SOURCE_ROOT; };
+		E444DC7C249131B00060D7EB /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDData.h; sourceTree = SOURCE_ROOT; };
+		E444DC7D249131B00060D7EB /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDNumber.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDNumber.h; sourceTree = SOURCE_ROOT; };
+		E444DC7E249131B00060D7EB /* DDRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDRange.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDRange.m; sourceTree = SOURCE_ROOT; };
+		E444DC7F249131B00060D7EB /* DDNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDNumber.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/Categories/DDNumber.m; sourceTree = SOURCE_ROOT; };
+		E444DC86249131D30060D7EB /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebSocket.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/WebSocket.m; sourceTree = SOURCE_ROOT; };
+		E444DC87249131D30060D7EB /* HTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPMessage.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPMessage.h; sourceTree = SOURCE_ROOT; };
+		E444DC88249131D30060D7EB /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPAuthenticationRequest.h; sourceTree = SOURCE_ROOT; };
+		E444DC89249131D30060D7EB /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPConnection.h; sourceTree = SOURCE_ROOT; };
+		E444DC8A249131D30060D7EB /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebSocket.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/WebSocket.h; sourceTree = SOURCE_ROOT; };
+		E444DC8B249131D30060D7EB /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPServer.h; sourceTree = SOURCE_ROOT; };
+		E444DC8C249131D30060D7EB /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPConnection.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPConnection.m; sourceTree = SOURCE_ROOT; };
+		E444DC8D249131D30060D7EB /* HTTPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPLogging.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPLogging.h; sourceTree = SOURCE_ROOT; };
+		E444DC8E249131D30060D7EB /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPAuthenticationRequest.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPAuthenticationRequest.m; sourceTree = SOURCE_ROOT; };
+		E444DC8F249131D40060D7EB /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPResponse.h; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPResponse.h; sourceTree = SOURCE_ROOT; };
+		E444DC90249131D40060D7EB /* HTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPServer.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPServer.m; sourceTree = SOURCE_ROOT; };
+		E444DC91249131D40060D7EB /* HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPMessage.m; path = WebDriverAgentLib/Vendor/CocoaHTTPServer/HTTPMessage.m; sourceTree = SOURCE_ROOT; };
 		EE006EAC1EB99B15006900A4 /* FBElementVisibilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBElementVisibilityTests.m; sourceTree = "<group>"; };
 		EE006EAE1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCElementSnapshot+FBHitPoint.h"; sourceTree = "<group>"; };
 		EE006EAF1EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCElementSnapshot+FBHitPoint.m"; sourceTree = "<group>"; };
@@ -1489,6 +1561,7 @@
 		E444DC4A24912EC40060D7EB /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				E444DC52249131050060D7EB /* CocoaHTTPServer */,
 				E444DC4D24912EEC0060D7EB /* CocoaAsyncSocket */,
 			);
 			name = Vendor;
@@ -1501,6 +1574,73 @@
 				E444DC4F24912F050060D7EB /* GCDAsyncSocket.m */,
 			);
 			name = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		E444DC52249131050060D7EB /* CocoaHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				E444DC88249131D30060D7EB /* HTTPAuthenticationRequest.h */,
+				E444DC8E249131D30060D7EB /* HTTPAuthenticationRequest.m */,
+				E444DC89249131D30060D7EB /* HTTPConnection.h */,
+				E444DC8C249131D30060D7EB /* HTTPConnection.m */,
+				E444DC8D249131D30060D7EB /* HTTPLogging.h */,
+				E444DC87249131D30060D7EB /* HTTPMessage.h */,
+				E444DC91249131D40060D7EB /* HTTPMessage.m */,
+				E444DC8F249131D40060D7EB /* HTTPResponse.h */,
+				E444DC8B249131D30060D7EB /* HTTPServer.h */,
+				E444DC90249131D40060D7EB /* HTTPServer.m */,
+				E444DC8A249131D30060D7EB /* WebSocket.h */,
+				E444DC86249131D30060D7EB /* WebSocket.m */,
+				E444DC55249131740060D7EB /* Responses */,
+				E444DC54249131690060D7EB /* Mime */,
+				E444DC53249131640060D7EB /* Categories */,
+			);
+			name = CocoaHTTPServer;
+			sourceTree = "<group>";
+		};
+		E444DC53249131640060D7EB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E444DC7C249131B00060D7EB /* DDData.h */,
+				E444DC7A249131B00060D7EB /* DDData.m */,
+				E444DC7D249131B00060D7EB /* DDNumber.h */,
+				E444DC7F249131B00060D7EB /* DDNumber.m */,
+				E444DC7B249131B00060D7EB /* DDRange.h */,
+				E444DC7E249131B00060D7EB /* DDRange.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E444DC54249131690060D7EB /* Mime */ = {
+			isa = PBXGroup;
+			children = (
+				E444DC722491319A0060D7EB /* MultipartFormDataParser.h */,
+				E444DC712491319A0060D7EB /* MultipartFormDataParser.m */,
+				E444DC6F2491319A0060D7EB /* MultipartMessageHeader.h */,
+				E444DC702491319A0060D7EB /* MultipartMessageHeader.m */,
+				E444DC732491319B0060D7EB /* MultipartMessageHeaderField.h */,
+				E444DC6E2491319A0060D7EB /* MultipartMessageHeaderField.m */,
+			);
+			name = Mime;
+			sourceTree = "<group>";
+		};
+		E444DC55249131740060D7EB /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				E444DC5D249131890060D7EB /* HTTPAsyncFileResponse.h */,
+				E444DC5F249131890060D7EB /* HTTPAsyncFileResponse.m */,
+				E444DC60249131890060D7EB /* HTTPDataResponse.h */,
+				E444DC5B249131880060D7EB /* HTTPDataResponse.m */,
+				E444DC5C249131880060D7EB /* HTTPDynamicFileResponse.h */,
+				E444DC58249131880060D7EB /* HTTPDynamicFileResponse.m */,
+				E444DC59249131880060D7EB /* HTTPErrorResponse.h */,
+				E444DC61249131890060D7EB /* HTTPErrorResponse.m */,
+				E444DC5A249131880060D7EB /* HTTPFileResponse.h */,
+				E444DC5E249131890060D7EB /* HTTPFileResponse.m */,
+				E444DC57249131880060D7EB /* HTTPRedirectResponse.h */,
+				E444DC56249131880060D7EB /* HTTPRedirectResponse.m */,
+			);
+			name = Responses;
 			sourceTree = "<group>";
 		};
 		EE9AB73E1CAEDF0C008C271F /* Categories */ = {
@@ -2219,6 +2359,7 @@
 				EEE376491D59FAE900ED88DD /* XCUIElement+FBWebDriverAttributes.h in Headers */,
 				715AFAC11FFA29180053896D /* FBScreen.h in Headers */,
 				EE6B64FD1D0F86EF00E85F5D /* XCTestPrivateSymbols.h in Headers */,
+				E444DC66249131890060D7EB /* HTTPFileResponse.h in Headers */,
 				AD76723D1D6B7CC000610457 /* XCUIElement+FBTyping.h in Headers */,
 				EEE376451D59F81400ED88DD /* XCUIElement+FBUtilities.h in Headers */,
 				EE158AB21CBD456F00A3E3F0 /* XCUIElement+FBScrolling.h in Headers */,
@@ -2253,6 +2394,7 @@
 				71B155DF23080CA600646AFB /* FBProtocolHelpers.h in Headers */,
 				EE35AD4B1E3B77D600A02D78 /* XCTestExpectationWaiter.h in Headers */,
 				EE35AD1E1E3B77D600A02D78 /* UIGestureRecognizer-RecordingAdditions.h in Headers */,
+				E444DC63249131890060D7EB /* HTTPRedirectResponse.h in Headers */,
 				6496A5D9230D6EB30087F8CB /* AXSettings.h in Headers */,
 				EE35AD301E3B77D600A02D78 /* XCKeyboardKeyMap.h in Headers */,
 				EE35AD5D1E3B77D600A02D78 /* XCTNSPredicateExpectationObject-Protocol.h in Headers */,
@@ -2286,18 +2428,24 @@
 				EE35AD0C1E3B77D600A02D78 /* _XCTestCaseImplementation.h in Headers */,
 				EE35AD211E3B77D600A02D78 /* UIPinchGestureRecognizer-RecordingAdditions.h in Headers */,
 				EE35AD4F1E3B77D600A02D78 /* XCTestManager_TestsInterface-Protocol.h in Headers */,
+				E444DC82249131B10060D7EB /* DDData.h in Headers */,
 				719CD8FC2126C88B00C7D0C2 /* XCUIApplication+FBAlert.h in Headers */,
 				EE35AD2B1E3B77D600A02D78 /* XCDeviceEvent.h in Headers */,
+				E444DC68249131890060D7EB /* HTTPDynamicFileResponse.h in Headers */,
 				EE18883A1DA661C400307AA8 /* FBMathUtils.h in Headers */,
 				71B155DA23070ECF00646AFB /* FBHTTPStatusCodes.h in Headers */,
 				EE35AD221E3B77D600A02D78 /* UISwipeGestureRecognizer-RecordingAdditions.h in Headers */,
 				713C6DCF1DDC772A00285B92 /* FBElementUtils.h in Headers */,
+				E444DC792491319B0060D7EB /* MultipartMessageHeaderField.h in Headers */,
 				EE158ABC1CBD456F00A3E3F0 /* FBDebugCommands.h in Headers */,
+				E444DC752491319B0060D7EB /* MultipartMessageHeader.h in Headers */,
 				EE35AD561E3B77D600A02D78 /* XCTestSuite.h in Headers */,
+				E444DC94249131D40060D7EB /* HTTPAuthenticationRequest.h in Headers */,
 				EE35AD6D1E3B77D600A02D78 /* XCUICoordinate.h in Headers */,
 				EE35AD5C1E3B77D600A02D78 /* XCTNSPredicateExpectation.h in Headers */,
 				EE35AD521E3B77D600A02D78 /* XCTestObservationCenter.h in Headers */,
 				EE35AD5B1E3B77D600A02D78 /* XCTNSNotificationExpectation.h in Headers */,
+				E444DC97249131D40060D7EB /* HTTPServer.h in Headers */,
 				EE35AD751E3B77D600A02D78 /* XCUIRecorderNodeFinder.h in Headers */,
 				1357E296233D05240054BDB8 /* XCUIHitPointResult.h in Headers */,
 				EE158AAE1CBD456F00A3E3F0 /* XCUIElement+FBAccessibility.h in Headers */,
@@ -2319,14 +2467,17 @@
 				EEEC7C921F21F27A0053426C /* FBPredicate.h in Headers */,
 				EE158AD41CBD456F00A3E3F0 /* FBExceptionHandler.h in Headers */,
 				EE158ADE1CBD456F00A3E3F0 /* FBRoute.h in Headers */,
+				E444DC81249131B10060D7EB /* DDRange.h in Headers */,
 				EE35AD471E3B77D600A02D78 /* XCTestDriver.h in Headers */,
 				EE35AD121E3B77D600A02D78 /* _XCTNSNotificationExpectationImplementation.h in Headers */,
+				E444DC93249131D40060D7EB /* HTTPMessage.h in Headers */,
 				EE35AD3A1E3B77D600A02D78 /* XCSynthesizedEventRecord.h in Headers */,
 				EE158AF91CBD456F00A3E3F0 /* FBApplicationProcessProxy.h in Headers */,
 				EE35AD671E3B77D600A02D78 /* XCTWaiterDelegatePrivate-Protocol.h in Headers */,
 				EE35AD4D1E3B77D600A02D78 /* XCTestManager_IDEInterface-Protocol.h in Headers */,
 				711084441DA3AA7500F913D6 /* FBXPath.h in Headers */,
 				EE35AD771E3B77D600A02D78 /* XCUIRecorderTimingMessage.h in Headers */,
+				E444DC83249131B10060D7EB /* DDNumber.h in Headers */,
 				EE35AD271E3B77D600A02D78 /* XCApplicationMonitor.h in Headers */,
 				EE8DDD7F20C5733C004D4925 /* XCUIElement+FBForceTouch.h in Headers */,
 				EE158AEA1CBD456F00A3E3F0 /* FBRuntimeUtils.h in Headers */,
@@ -2335,6 +2486,7 @@
 				EE35AD131E3B77D600A02D78 /* _XCTNSPredicateExpectationImplementation.h in Headers */,
 				EE158ABE1CBD456F00A3E3F0 /* FBElementCommands.h in Headers */,
 				EE158AF71CBD456F00A3E3F0 /* FBSpringboardApplication.h in Headers */,
+				E444DC782491319B0060D7EB /* MultipartFormDataParser.h in Headers */,
 				715557D3211DBCE700613B26 /* FBTCPSocket.h in Headers */,
 				71B49EC71ED1A58100D51AD6 /* XCUIElement+FBUID.h in Headers */,
 				EE35AD381E3B77D600A02D78 /* XCSymbolicationRecord.h in Headers */,
@@ -2360,12 +2512,17 @@
 				EE35AD691E3B77D600A02D78 /* XCTWaiterManager.h in Headers */,
 				EE35AD481E3B77D600A02D78 /* XCTestDriverInterface-Protocol.h in Headers */,
 				648C10AF22AAAE4000B81B9A /* TIPreferencesController.h in Headers */,
+				E444DC6C249131890060D7EB /* HTTPDataResponse.h in Headers */,
+				E444DC65249131890060D7EB /* HTTPErrorResponse.h in Headers */,
 				EE35AD111E3B77D600A02D78 /* _XCTestSuiteImplementation.h in Headers */,
 				714097431FAE1B0B008FB2C5 /* FBBaseActionsSynthesizer.h in Headers */,
 				AD6C26941CF2379700F8B5FF /* FBAlert.h in Headers */,
 				EE35AD731E3B77D600A02D78 /* XCUIElementQuery.h in Headers */,
 				EE35AD331E3B77D600A02D78 /* XCPointerEvent.h in Headers */,
 				EE35AD351E3B77D600A02D78 /* XCSourceCodeRecording.h in Headers */,
+				E444DC99249131D40060D7EB /* HTTPLogging.h in Headers */,
+				E444DC9B249131D40060D7EB /* HTTPResponse.h in Headers */,
+				E444DC69249131890060D7EB /* HTTPAsyncFileResponse.h in Headers */,
 				EEE9B4721CD02B88009D2030 /* FBRunLoopSpinner.h in Headers */,
 				EE3A18621CDE618F00DE4205 /* FBErrorBuilder.h in Headers */,
 				EE35AD261E3B77D600A02D78 /* XCApplicationMonitor_iOS.h in Headers */,
@@ -2408,12 +2565,14 @@
 				EE35AD6C1E3B77D600A02D78 /* XCUIApplicationProcess.h in Headers */,
 				7140974B1FAE1B51008FB2C5 /* FBW3CActionsSynthesizer.h in Headers */,
 				EE35AD151E3B77D600A02D78 /* CDStructures.h in Headers */,
+				E444DC96249131D40060D7EB /* WebSocket.h in Headers */,
 				EE35AD311E3B77D600A02D78 /* XCKeyboardLayout.h in Headers */,
 				EE35AD3B1E3B77D600A02D78 /* XCTAsyncActivity-Protocol.h in Headers */,
 				EE35AD251E3B77D600A02D78 /* XCActivityRecord.h in Headers */,
 				EEBBD48B1D47746D00656A81 /* XCUIElement+FBFind.h in Headers */,
 				EE35AD4E1E3B77D600A02D78 /* XCTestManager_ManagerInterface-Protocol.h in Headers */,
 				EE6A893A1D0B38640083E92B /* FBFailureProofTestCase.h in Headers */,
+				E444DC95249131D40060D7EB /* HTTPConnection.h in Headers */,
 				EE35AD631E3B77D600A02D78 /* XCTTestRunSessionDelegate-Protocol.h in Headers */,
 				EE35AD431E3B77D600A02D78 /* XCTestCaseSuite.h in Headers */,
 				EE35AD091E3B77D600A02D78 /* _XCInternalTestRun.h in Headers */,
@@ -2866,8 +3025,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE158AC71CBD456F00A3E3F0 /* FBScreenshotCommands.m in Sources */,
+				E444DC98249131D40060D7EB /* HTTPConnection.m in Sources */,
 				EEEC7C931F21F27A0053426C /* FBPredicate.m in Sources */,
 				7136A47A1E8918E60024FC3D /* XCUIElement+FBPickerWheel.m in Sources */,
+				E444DC84249131B10060D7EB /* DDRange.m in Sources */,
+				E444DC762491319B0060D7EB /* MultipartMessageHeader.m in Sources */,
 				6385F4A7220A40760095BBDB /* XCUIApplicationProcessDelay.m in Sources */,
 				711084451DA3AA7500F913D6 /* FBXPath.m in Sources */,
 				719CD8FD2126C88B00C7D0C2 /* XCUIApplication+FBAlert.m in Sources */,
@@ -2887,6 +3049,7 @@
 				EE158AFA1CBD456F00A3E3F0 /* FBApplicationProcessProxy.m in Sources */,
 				EE6A893B1D0B38640083E92B /* FBFailureProofTestCase.m in Sources */,
 				713AE576243A53BE0000D657 /* FBW3CActionsHelpers.m in Sources */,
+				E444DC80249131B10060D7EB /* DDData.m in Sources */,
 				71B155E123080CA600646AFB /* FBProtocolHelpers.m in Sources */,
 				EE158AB11CBD456F00A3E3F0 /* XCUIElement+FBIsVisible.m in Sources */,
 				EEBBD48C1D47746D00656A81 /* XCUIElement+FBFind.m in Sources */,
@@ -2897,12 +3060,16 @@
 				EEE9B4731CD02B88009D2030 /* FBRunLoopSpinner.m in Sources */,
 				719CD8F92126C78F00C7D0C2 /* FBAlertsMonitor.m in Sources */,
 				71A7EAFA1E224648001DA4F2 /* FBClassChainQueryParser.m in Sources */,
+				E444DC6A249131890060D7EB /* HTTPFileResponse.m in Sources */,
+				E444DC742491319B0060D7EB /* MultipartMessageHeaderField.m in Sources */,
 				71A224E61DE2F56600844D55 /* NSPredicate+FBFormat.m in Sources */,
+				E444DC85249131B10060D7EB /* DDNumber.m in Sources */,
 				710C16CE21497A08006EA1D0 /* XCAccessibilityElement+FBComparison.m in Sources */,
 				EEE376441D59F81400ED88DD /* XCUIDevice+FBRotation.m in Sources */,
 				13815F712328D20400CDAB61 /* FBActiveAppDetectionPoint.m in Sources */,
 				71B49EC81ED1A58100D51AD6 /* XCUIElement+FBUID.m in Sources */,
 				EE158AE21CBD456F00A3E3F0 /* FBRouteRequest.m in Sources */,
+				E444DC92249131D40060D7EB /* WebSocket.m in Sources */,
 				EE158ADB1CBD456F00A3E3F0 /* FBResponseJSONPayload.m in Sources */,
 				EE7E271F1D06C69F001BEC7B /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
 				7155D704211DCEF400166C20 /* FBMjpegServer.m in Sources */,
@@ -2927,25 +3094,34 @@
 				AD6C26991CF2481700F8B5FF /* XCUIDevice+FBHelpers.m in Sources */,
 				EE6B64FE1D0F86EF00E85F5D /* XCTestPrivateSymbols.m in Sources */,
 				AD76723E1D6B7CC000610457 /* XCUIElement+FBTyping.m in Sources */,
+				E444DC64249131890060D7EB /* HTTPDynamicFileResponse.m in Sources */,
 				EE158AAF1CBD456F00A3E3F0 /* XCUIElement+FBAccessibility.m in Sources */,
 				7150348821A6DAD600A0F4BA /* FBImageUtils.m in Sources */,
 				E444DC5124912F050060D7EB /* GCDAsyncSocket.m in Sources */,
+				E444DC6D249131890060D7EB /* HTTPErrorResponse.m in Sources */,
+				E444DC62249131890060D7EB /* HTTPRedirectResponse.m in Sources */,
 				EE158AE51CBD456F00A3E3F0 /* FBSession.m in Sources */,
+				E444DC772491319B0060D7EB /* MultipartFormDataParser.m in Sources */,
 				EE158AC11CBD456F00A3E3F0 /* FBFindElementCommands.m in Sources */,
 				EE7E271D1D06C69F001BEC7B /* FBDebugLogDelegateDecorator.m in Sources */,
 				EE158AB91CBD456F00A3E3F0 /* FBAlertViewCommands.m in Sources */,
 				EE158AB31CBD456F00A3E3F0 /* XCUIElement+FBScrolling.m in Sources */,
 				EE158AC91CBD456F00A3E3F0 /* FBSessionCommands.m in Sources */,
+				E444DC6B249131890060D7EB /* HTTPAsyncFileResponse.m in Sources */,
 				EE006EB11EBA1AA9006900A4 /* XCElementSnapshot+FBHitPoint.m in Sources */,
 				EE9B76A71CF7A43900275851 /* FBConfiguration.m in Sources */,
+				E444DC9C249131D40060D7EB /* HTTPServer.m in Sources */,
+				E444DC67249131890060D7EB /* HTTPDataResponse.m in Sources */,
 				EE158AD31CBD456F00A3E3F0 /* FBElementCache.m in Sources */,
 				71930C4320662E1F00D3AFEC /* FBPasteboard.m in Sources */,
 				AD6C26951CF2379700F8B5FF /* FBAlert.m in Sources */,
 				EE158ABF1CBD456F00A3E3F0 /* FBElementCommands.m in Sources */,
 				EE158AD51CBD456F00A3E3F0 /* FBExceptionHandler.m in Sources */,
 				EE5A24421F136D360078B1D9 /* FBXCodeCompatibility.m in Sources */,
+				E444DC9A249131D40060D7EB /* HTTPAuthenticationRequest.m in Sources */,
 				EEE376421D59F81400ED88DD /* XCElementSnapshot+FBHelpers.m in Sources */,
 				EE158AE91CBD456F00A3E3F0 /* FBElementTypeTransformer.m in Sources */,
+				E444DC9D249131D40060D7EB /* HTTPMessage.m in Sources */,
 				EE158AF61CBD456F00A3E3F0 /* FBApplication.m in Sources */,
 				715AFAC21FFA29180053896D /* FBScreen.m in Sources */,
 				71B155DC230711E900646AFB /* FBCommandStatus.m in Sources */,
