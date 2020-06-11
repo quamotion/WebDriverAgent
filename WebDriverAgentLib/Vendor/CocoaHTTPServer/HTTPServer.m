@@ -11,12 +11,13 @@
 #pragma clang diagnostic ignored "-Wimplicit-retain-self"
 #pragma clang diagnostic ignored "-Wnullable-to-nonnull-conversion"
 #pragma clang diagnostic ignored "-Wunused"
+#pragma clang diagnostic ignored "-Wextra-semi-stmt"
 
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 
-@interface HTTPServer (PrivateAPI)
+@interface HTTPServer (PrivateAPI) <GCDAsyncSocketDelegate>
 
 - (void)unpublishBonjour;
 - (void)publishBonjour;
