@@ -1,4 +1,3 @@
-#import "GCDAsyncSocket.h"
 #import "HTTPServer.h"
 #import "HTTPConnection.h"
 #import "HTTPMessage.h"
@@ -6,6 +5,12 @@
 #import "DDNumber.h"
 #import "DDRange.h"
 #import "HTTPLogging.h"
+
+#if __has_warning("-Watimport-in-framework-header")
+#pragma clang diagnostic ignored "-Watimport-in-framework-header"
+#endif
+
+#import <CocoaAsyncSocket/GCDAsyncSocket.h>
 
 #if ! __has_feature(objc_arc)
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
@@ -127,8 +132,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
     
     // Take over ownership of the socket
     asyncSocket = newSocket;
-    [asyncSocket setDelegate:self delegateQueue:connectionQueue];
-    
+    [asyncSocket setDelegate:(id<GCDAsyncSocketDelegate>)self delegateQueue:connectionQueue];
+
+
     // Store configuration
     config = aConfig;
     
