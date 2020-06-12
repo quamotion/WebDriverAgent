@@ -5,11 +5,6 @@
 #import "DDNumber.h"
 #import "DDRange.h"
 #import "HTTPLogging.h"
-
-#if __has_warning("-Watimport-in-framework-header")
-#pragma clang diagnostic ignored "-Watimport-in-framework-header"
-#endif
-
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 
 #if ! __has_feature(objc_arc)
