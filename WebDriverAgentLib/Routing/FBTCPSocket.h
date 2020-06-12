@@ -7,7 +7,11 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "GCDAsyncSocket.h"
+#if __has_warning("-Watimport-in-framework-header")
+#pragma clang diagnostic ignored "-Watimport-in-framework-header"
+#endif
+
+#import <CocoaAsyncSocket/GCDAsyncSocket.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
