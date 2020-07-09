@@ -6,6 +6,7 @@
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
 #pragma clang diagnostic ignored "-Widiomatic-parentheses"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 
 @implementation RoutingConnection {
   __unsafe_unretained RoutingHTTPServer *http;
