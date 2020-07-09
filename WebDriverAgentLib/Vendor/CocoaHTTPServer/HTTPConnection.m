@@ -21,6 +21,7 @@
 #pragma clang diagnostic ignored "-Wformat-nonliteral"
 #pragma clang diagnostic ignored "-Wunreachable-code"
 #pragma clang diagnostic ignored "-Wfloat-conversion"
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
