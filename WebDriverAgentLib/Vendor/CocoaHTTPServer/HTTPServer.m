@@ -12,6 +12,7 @@
 #pragma clang diagnostic ignored "-Wimplicit-retain-self"
 #pragma clang diagnostic ignored "-Wnullable-to-nonnull-conversion"
 #pragma clang diagnostic ignored "-Wunused"
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
