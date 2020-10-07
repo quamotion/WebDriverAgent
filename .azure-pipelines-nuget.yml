@@ -92,6 +92,11 @@ jobs:
   - script: |
       $(DEVELOPER_DIR)/Contents/Developer/usr/bin/xcodebuild -version
 
+      # Update the version information in Info.plist
+      version=$(jq -r ".version" package.json)
+      /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${version}" WebDriverAgentRunner/Info.plist
+      /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${version}" WebDriverAgentRunner/Info.plist
+
       $(DEVELOPER_DIR)/Contents/Developer/usr/bin/xcodebuild \
         -project WebDriverAgent.xcodeproj \
         -scheme WebDriverAgentRunner \
@@ -105,11 +110,14 @@ jobs:
     displayName: 'Build WebDriverAgent'
 
   - script: |
-      # Dump basic information about the verison of XCTest embedded in this ipa
+      # Dump basic information about the version of XCTest embedded in this ipa
       /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/version.plist
       /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/Info.plist
+      
+      # Dump basic information about the version of WebDriverAgent
+      /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Info.plist
     workingDirectory: $(Build.ArtifactStagingDirectory)/$(sdk)/$(configuration)/WebDriverAgent
-    displayName: 'Dump XCTest information'
+    displayName: 'Dump XCTest, WebDriverAgent information'
 
   - script: |
       mkdir -p ./ipa/Payload
