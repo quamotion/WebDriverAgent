@@ -32,9 +32,6 @@ jobs:
         DEVELOPER_DIR: '/Applications/Xcode_11.3.1.app'
         image: 'macOS-10.15'
       xcode_11_4:
-        DEVELOPER_DIR: '/Applications/Xcode_11.4.app'
-        image: 'macOS-10.15'
-      xcode_11_4_1:
         DEVELOPER_DIR: '/Applications/Xcode_11.4.1.app'
         image: 'macOS-10.15'
       xcode_11_5:
@@ -43,9 +40,12 @@ jobs:
       xcode_11_6:
         DEVELOPER_DIR: '/Applications/Xcode_11.6_beta.app'
         image: 'macOS-10.15'
+      xcode_11_7:
+        DEVELOPER_DIR: '/Applications/Xcode_11.7_beta.app'
+        image: 'macOS-10.15'
 
       xcode_12_0:
-        DEVELOPER_DIR: '/Applications/Xcode_12.app'
+        DEVELOPER_DIR: '/Applications/Xcode_12.0.1.app'
         image: 'macOS-10.15'
       xcode_12_1:
         DEVELOPER_DIR: '/Applications/Xcode_12.1.app'
