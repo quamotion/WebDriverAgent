@@ -1,0 +1,104 @@
+name: Build NuGet package
+on: [push]
+jobs:
+  nuget:
+    strategy:
+      matrix:
+        include:
+          - os: macos-11
+            developer_dir: /Applications/Xcode_13.0.app
+
+          - os: macos-11
+            developer_dir: /Applications/Xcode_12.5.1.app
+
+          - os: macos-11
+            developer_dir: /Applications/Xcode_12.4.app
+
+          - os: macos-11
+            developer_dir: /Applications/Xcode_11.7.app
+
+    runs-on: ${{ matrix.os }}
+    env:
+      DEVELOPER_DIR: ${{ matrix.developer_dir }}
+      SDK: iphoneos
+      CONFIGURATION: release
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: |
+        version_prefix=$(jq -r ".version" package.json)
+        xcode_version=$(xcodebuild -version | head -n 1 | awk '{ print $2 }')
+        version_suffix="r${GITHUB_RUN_ID}-xcode-${xcode_version}"
+
+        echo "Building version ${version_prefix}-${version_suffix}, using Xcode version ${xcode_version}"
+
+        echo "::set-output name=package_version::${version_prefix}-${version_suffix}"
+        echo "::set-output name=package_version_prefix::${version_prefix}"
+        echo "::set-output name=package_version_suffix::${version_suffix}"
+        echo "::set-output name=xcode_version::${xcode_version}"
+        echo "::set-output name=build_number::${version_prefix}-r${GITHUB_RUN_ID}"
+      id: version
+      name: "Determine package version"
+
+    - uses: apple-actions/import-codesign-certs@v1
+      with: 
+        p12-file-base64: ${{ secrets.DEVELOPER_CERTIFICATE }}
+        p12-password: ${{ secrets.DEVELOPER_CERTIFICATE_PASSWORD }}
+      name: "Import developer identity"
+        
+    - run: |
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        echo -n "${{ secrets.PROVISIONING_PROFILE }}" | base64 --decode --output ~/Library/MobileDevice/Provisioning\ Profiles/build.mobileprovision
+      name: "Import provisioning profile"
+
+    - run: |
+        ${DEVELOPER_DIR}/Contents/Developer/usr/bin/xcodebuild -version
+        # Update the version information in Info.plist
+        version=$(jq -r ".version" package.json)
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${version}" WebDriverAgentRunner/Info.plist
+        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${version}" WebDriverAgentRunner/Info.plist
+        ${DEVELOPER_DIR}/Contents/Developer/usr/bin/xcodebuild \
+          -project WebDriverAgent.xcodeproj \
+          -scheme WebDriverAgentRunner \
+          -sdk ${SDK} \
+          -configuration ${CONFIGURATION} \
+          -derivedDataPath ${{ github.workspace }}/${SDK}/${CONFIGURATION}/WebDriverAgent \
+          PROVISIONING_PROFILE_RUNNER=${{ secrets.PROVISIONING_PROFILE_UUID }} \
+          DEVELOPMENT_TEAM="${{ secrets.DEVELOPMENT_TEAM }}" \
+          CODE_SIGN_IDENTITY="${{ secrets.DEVELOPER_CERTIFICATE_IDENTITY }}" \
+          CODE_SIGN_STYLE=manual
+      name: 'Build WebDriverAgent'
+
+    - run: |
+        # Dump basic information about the version of XCTest embedded in this ipa
+        /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/version.plist
+        /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Frameworks/XCTest.framework/Info.plist
+        
+        # Dump basic information about the version of WebDriverAgent
+        /usr/libexec/PlistBuddy -c Print WebDriverAgentRunner-Runner.app/Info.plist
+      working-directory: ${{ github.workspace }}/${{ env.SDK }}/${{ env.CONFIGURATION }}/WebDriverAgent/Build/Products/${{ env.CONFIGURATION}}-${{ env.SDK }}/
+      name: 'Dump XCTest, WebDriverAgent information'
+
+    - run: |
+        mkdir -p ./ipa/Payload
+        cp -r ./Build/Products/${CONFIGURATION}-${SDK}/WebDriverAgentRunner-Runner.app ./ipa/Payload/
+        cd ./ipa
+        
+        mkdir -p ${{ github.workspace }}/ipa
+        zip -r ${{ github.workspace }}/ipa/WebDriverAgent-${{ steps.version.outputs.package_version }}.ipa .
+      working-directory: ${{ github.workspace }}/${{ env.SDK }}/${{ env.CONFIGURATION }}/WebDriverAgent
+      name: 'Package WebDriverAgent.ipa'
+
+    - run: |
+        cp ${{ github.workspace }}/ipa/WebDriverAgent-${{ steps.version.outputs.package_version }}.ipa ./WebDriverAgent.zip
+        mkdir -p ${{ github.workspace }}/nuget
+        dotnet build -c Release /p:VersionPrefix=${{ steps.version.outputs.package_version_prefix }} /p:VersionSuffix=${{ steps.version.outputs.package_version_suffix }}
+        dotnet pack -c Release /p:VersionPrefix=${{ steps.version.outputs.package_version_prefix }} /p:VersionSuffix=${{ steps.version.outputs.package_version_suffix }} -o ${{ github.workspace }}/nuget
+      working-directory: ${{ github.workspace }}/Quamotion.WebDriverAgent
+      name: 'Create Quamotion.WebDriverAgent NuGet package'
+
+    - run: |
+        dotnet nuget add source ${{ secrets.NUGET_SOURCE }} --username ${{ secrets.NUGET_USER }} --password ${{secrets.NUGET_API_KEY}} --name ci --store-password-in-clear-text
+        dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source ${{ secrets.NUGET_SOURCE }}
+      working-directory: ${{ github.workspace }}/nuget
+      name: 'Publish Quamotion.WebDriverAgent package'
